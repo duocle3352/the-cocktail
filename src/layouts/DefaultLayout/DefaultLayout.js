@@ -3,14 +3,14 @@ import { Header, Footer, Sidebar } from '../components';
 
 function DefaultLayout({ children }) {
     return (
-        <div className="wrapper">
+        <>
             <Header />
-            <div className="main">
+            <div className="grid grid-cols-6">
                 <Sidebar />
                 {children}
             </div>
             <Footer />
-        </div>
+        </>
     );
 }
 
