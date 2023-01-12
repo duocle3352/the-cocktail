@@ -6,6 +6,7 @@ const routes = {
     search: '/search',
     detail: '/detail/:id',
     cart: '/cart',
+    category: '/category/:type',
 };
 
 export default routes;

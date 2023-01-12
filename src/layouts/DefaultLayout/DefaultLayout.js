@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
-import { Header, Footer, Sidebar } from '../components';
+import { Header, Footer, Sidebar, Slider } from '../components';
 
 function DefaultLayout({ children }) {
     return (
         <>
             <Header />
-            <div className="grid grid-cols-6">
-                <Sidebar />
-                {children}
-            </div>
+            <Sidebar />
+            <Slider />
+            <div className="grid grid-cols-6">{children}</div>
             <Footer />
         </>
     );
