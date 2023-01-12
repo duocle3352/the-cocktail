@@ -3,7 +3,7 @@
 
 @layer base {
     body {
-        @apply font-openSans text-darkText;
+        @apply font-openSans text-darkText cursor-default;
     }
 
     h1 {
@@ -20,6 +20,14 @@
 
     h4 {
         @apply text-2xl;
+    }
+
+    h5 {
+        @apply text-xl;
+    }
+
+    h6 {
+        @apply text-lg;
     }
 
     button,
@@ -40,15 +48,15 @@
     /* NAV ITEM */
     .nav {
         @apply inline-block text-base font-semibold uppercase py-5 px-4 
-        relative overflow-hidden hover:text-primary;
+        relative overflow-hidden hover:text-primary-orange;
     }
     .nav-after {
         @apply after:content-[''] after:absolute after:bottom-4 after:left-4 after:right-4 
-        after:h-[2px] after:bg-primary
+        after:h-[2px] after:bg-primary-green
         after:transition-all after:ease-linear after:translate-x-[-150%];
     }
     .nav-active {
-        @apply text-primary after:h-[2px] after:translate-x-0;
+        @apply text-primary-orange after:h-[2px] after:translate-x-0;
     }
 
     /* btn */
@@ -57,7 +65,7 @@
     }
 
     .btn-primary {
-        @apply bg-primary;
+        @apply bg-primary-green;
     }
 
     /* form */

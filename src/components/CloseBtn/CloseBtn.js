@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types';
 import { memo } from 'react';
 
-function CloseModal({ icon, onCloseModal }) {
+function CloseBtn({ icon, onClose }) {
     return (
         <button
             className="absolute top-1 right-1 px-1 py-1 text-darkLightText hover:text-darkText"
-            onClick={onCloseModal}
+            onClick={onClose}
         >
             {icon}
         </button>
     );
 }
 
-CloseModal.propTypes = {
+CloseBtn.propTypes = {
     icon: PropTypes.node.isRequired,
-    onCloseModal: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
 };
 
-export default memo(CloseModal);
+export default memo(CloseBtn);

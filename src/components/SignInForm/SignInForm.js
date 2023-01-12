@@ -36,7 +36,7 @@ function SignInForm({ onShowRegister }) {
 
             <p className="font-medium text-center mt-3">
                 Don`t have an account yet?&#160;
-                <button className="text-primary" onClick={onShowRegister}>
+                <button className="text-primary-orange" onClick={onShowRegister}>
                     Sign up here
                 </button>
             </p>
@@ -85,7 +85,7 @@ function SignInForm({ onShowRegister }) {
                             />
 
                             <div className="flex justify-center text-xs mt-2">
-                                <Link to={config.routes.home} className="text-primary">
+                                <Link to={config.routes.home} className="text-primary-orange">
                                     Forgotten Your Password?
                                 </Link>
                             </div>

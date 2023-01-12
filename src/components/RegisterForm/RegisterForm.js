@@ -49,7 +49,7 @@ function RegisterForm({ onShowSignIn }) {
 
                 <p className="font-medium text-center mt-3">
                     You have an account?&#160;
-                    <button className="text-primary" onClick={onShowSignIn}>
+                    <button className="text-primary-orange" onClick={onShowSignIn}>
                         Sign in here
                     </button>
                 </p>
@@ -128,7 +128,7 @@ function RegisterForm({ onShowSignIn }) {
                                 <label className="block mt-2">
                                     <div className="flex">
                                         <Field type="checkbox" name="old" value="yes" />
-                                        <p className="ml-2">Yes, I am 16+ years old.</p>
+                                        <p className="ml-2">Yes, I am 21+ years old.</p>
                                     </div>
                                     {errors.old && touched.old && (
                                         <p className="from-error">{errors.old}</p>
@@ -140,11 +140,11 @@ function RegisterForm({ onShowSignIn }) {
                                         <Field type="checkbox" name="policy" value="yes" />
                                         <p className="ml-2">
                                             I have read, understood and accepted the{' '}
-                                            <Link className="text-primary underline">
+                                            <Link className="text-primary-orange underline">
                                                 Privacy Policy
                                             </Link>{' '}
                                             and{' '}
-                                            <Link className="text-primary underline">
+                                            <Link className="text-primary-orange underline">
                                                 Website Terms and Conditions
                                             </Link>
                                             .

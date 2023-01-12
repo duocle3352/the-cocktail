@@ -7,7 +7,7 @@ import './App.css';
 function App() {
     return (
         <Router>
-            <div className="app">
+            <div className="app bg-primary-bg">
                 <Routes>
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;

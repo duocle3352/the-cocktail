@@ -2,23 +2,27 @@ import { useState, useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { BiSearch, BiCart } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
+import { NumericFormat } from 'react-number-format';
+// import { useSelector } from 'react-redux';
 
 import { Nav } from '~/components/Nav';
 import { NavItem } from '~/components/NavItem';
 import { HeaderRightToolItem } from '~/components/HeaderRightToolItem';
 import { ModalWrapper } from '~/components/ModalWrapper';
-import { CloseModal } from '~/components/CloseModal';
+import { CloseBtn } from '~/components/CloseBtn';
 import { SignInForm } from '~/components/SignInForm';
 import { RegisterForm } from '~/components/RegisterForm';
+import { MiniCart } from '~/components/MiniCart';
 import { useOutsideCloser } from '~/hooks';
 import config from '~/config';
 import images from '~/assets/images';
 
 // css
-const rightToolBtnRounded = 'bg-white p-3 rounded-xl hover:text-primary';
+const rightToolBtn = 'bg-white p-3 rounded-xl hover:text-primary';
 
 function Header() {
     const [isSignInModal, setIsSignInModal] = useState(false);
+    const [isShowCart, setIsShowCart] = useState(false);
     const [isSignIn, setIsSignIn] = useState(true);
 
     const toggleSignInModal = () => {
@@ -28,6 +32,10 @@ function Header() {
     // hide modal on click our side
     const modalRef = useRef();
     useOutsideCloser(modalRef, toggleSignInModal);
+
+    const toggleCart = () => {
+        setIsShowCart(!isShowCart);
+    };
 
     const showSignIn = useCallback(() => {
         setIsSignIn(true);
@@ -66,17 +74,39 @@ function Header() {
 
                 {/* search btn*/}
                 <HeaderRightToolItem>
-                    <button className={rightToolBtnRounded}>
+                    <Link to={config.routes.search} className={`block ${rightToolBtn}`}>
                         <BiSearch size="1.5rem" />
-                    </button>
+                    </Link>
                 </HeaderRightToolItem>
 
                 {/* shopping cart */}
                 <HeaderRightToolItem>
-                    <button className={`flex items-center ${rightToolBtnRounded}`}>
-                        <BiCart size="1.5rem" />
-                        <span className="font-semibold ml-2">100.5$</span>
-                    </button>
+                    <MiniCart showCart={isShowCart} onToggleCart={toggleCart}>
+                        <button
+                            className={`flex items-center relative ${rightToolBtn}`}
+                            onClick={toggleCart}
+                        >
+                            <BiCart size="1.5rem" />
+                            <NumericFormat
+                                value={100}
+                                displayType={'text'}
+                                thousandSeparator={true}
+                                prefix={'$'}
+                                renderText={(formattedValue) => (
+                                    <span className="text-xl font-semibold ml-2">
+                                        {formattedValue}
+                                    </span>
+                                )}
+                            />
+                            {/* quantity */}
+                            <span
+                                className="absolute -top-1 -right-2 text-white bg-primary-orange 
+                                                leading-none px-1 py-1 rounded-full"
+                            >
+                                2
+                            </span>
+                        </button>
+                    </MiniCart>
                 </HeaderRightToolItem>
 
                 {/* sign form */}
@@ -89,9 +119,9 @@ function Header() {
                             ref={modalRef}
                         >
                             {/* close btn */}
-                            <CloseModal
+                            <CloseBtn
                                 icon={<AiOutlineClose size="1.8rem" />}
-                                onCloseModal={toggleSignInModal}
+                                onClose={toggleSignInModal}
                             />
 
                             {/* slogan */}
@@ -100,7 +130,7 @@ function Header() {
                                     isSignIn ? '' : 'rotate-90 top-[160px] left-[-60px]'
                                 } transition-transform ease-linear`}
                             >
-                                <span className="text-orange-500">premium </span>
+                                <span className="text-primary-orange">premium </span>
                                 spirits shipped right to your door
                             </h3>
 

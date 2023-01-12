@@ -8,14 +8,16 @@ import { Shop } from '~/pages/Shop';
 import { Contact } from '~/pages/Contact';
 import { Search } from '~/pages/Search';
 import { Detail } from '~/pages/Detail';
+import { Cart } from '~/pages/Cart';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.about, component: About },
     { path: config.routes.shop, component: Shop },
     { path: config.routes.contact, component: Contact },
-    { path: config.routes.search, component: Search, layout: null },
+    { path: config.routes.search, component: Search, layout: HeaderLayout },
     { path: config.routes.detail, component: Detail, layout: HeaderLayout },
+    { path: config.routes.cart, component: Cart, layout: HeaderLayout },
 ];
 
 const privateRoutes = [];
