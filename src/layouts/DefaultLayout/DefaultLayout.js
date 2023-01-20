@@ -5,9 +5,11 @@ function DefaultLayout({ children }) {
     return (
         <>
             <Header />
-            <Sidebar />
-            <Slider />
-            <div className="grid grid-cols-6">{children}</div>
+            <div className="mt-20">
+                <Sidebar />
+                <Slider />
+                {children}
+            </div>
             <Footer />
         </>
     );
