@@ -45,6 +45,11 @@
 }
 
 @layer components {
+    /* page wrapper */
+    .section-wrapper {
+        @apply mt-16 mx-5;
+    }
+
     /* NAV ITEM */
     .nav {
         @apply inline-block text-base font-semibold uppercase py-5 px-4 

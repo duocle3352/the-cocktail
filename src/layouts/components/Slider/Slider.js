@@ -23,7 +23,7 @@ function Slider() {
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper w-[90%] rounded-xl overflow-hidden"
+                className="mySwiper w-[90%] rounded-3xl overflow-hidden"
             >
                 {images.banners.map((banner, index) => (
                     <SwiperSlide key={index}>

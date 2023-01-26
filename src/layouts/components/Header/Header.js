@@ -48,7 +48,7 @@ function Header() {
     return (
         <header
             className="flex items-center justify-between 
-                        fixed top-0 left-0 w-full h-20 z-50 bg-white"
+                        fixed top-0 left-0 w-full h-20 z-50 bg-primary-bg"
         >
             {/* nav */}
             <Nav>

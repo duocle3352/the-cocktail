@@ -8,7 +8,7 @@ function DefaultLayout({ children }) {
             <div className="mt-20">
                 <Sidebar />
                 <Slider />
-                {children}
+                <div className="px-4 py-10">{children}</div>
             </div>
             <Footer />
         </>

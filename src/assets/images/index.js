@@ -8,6 +8,9 @@ const images = {
         require('~/assets/images/banner4.jpg'),
         require('~/assets/images/banner5.jpg'),
     ],
+    draws1: require('~/assets/images/draw-1.webp'),
+    draws2: require('~/assets/images/draw-2.webp'),
+    draws3: require('~/assets/images/draw-3.webp'),
 };
 
 export default images;
