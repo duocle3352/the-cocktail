@@ -1,6 +1,6 @@
 import * as httpRequest from '~/utils/httpRequest';
 
-const getCategories = async () => {
+const getCategoriesService = async () => {
     const res = await httpRequest.get('list.php', {
         params: {
             c: 'list',
@@ -10,4 +10,4 @@ const getCategories = async () => {
     return res.data;
 };
 
-export default getCategories;
+export default getCategoriesService;

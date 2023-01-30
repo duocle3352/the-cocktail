@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getCategories } from '~/services';
+import { getCategoriesService } from '~/services';
 
-export const categoriesData = createAsyncThunk('categories/categoriesData', async () => {
-    const result = await getCategories();
+export const getCategories = createAsyncThunk('categories/getCategories', async () => {
+    const result = await getCategoriesService();
     return result;
 });
 
@@ -11,26 +11,27 @@ export const categoriesSlice = createSlice({
     initialState: {
         categories: [],
         isLoading: false,
-        error: null,
+        hasError: false,
     },
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(categoriesData.pending, (state, action) => {
+        builder.addCase(getCategories.pending, (state, action) => {
             if (state.isLoading === false) {
                 state.isLoading = true;
             }
         });
 
-        builder.addCase(categoriesData.fulfilled, (state, action) => {
+        builder.addCase(getCategories.fulfilled, (state, action) => {
             if (state.isLoading === true) {
                 state.categories = action.payload;
                 state.isLoading = false;
+                state.hasError = false;
             }
         });
-        builder.addCase(categoriesData.rejected, (state, action) => {
+        builder.addCase(getCategories.rejected, (state, action) => {
             if (state.isLoading === true) {
                 state.isLoading = false;
-                state.error = 'Error occured';
+                state.hasError = true;
             }
         });
     },

@@ -1,14 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { categoriesData } from '~/state/features/categoriesSlice';
+import { useSelector } from 'react-redux';
 
 const useGetCategories = () => {
-    const dispatch = useDispatch();
-    const { categories, isLoading, error } = useSelector((state) => state.categories);
-
-    useEffect(() => {
-        dispatch(categoriesData());
-    }, [dispatch]);
+    const { categories, isLoading, hasError } = useSelector((state) => state.categories);
 
     let data;
     if (isLoading === true) {
@@ -17,7 +10,7 @@ const useGetCategories = () => {
     if (isLoading === false) {
         data = categories;
     }
-    if (error !== null) {
+    if (hasError === true) {
         data = 'have error';
     }
 
