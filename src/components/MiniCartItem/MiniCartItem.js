@@ -7,7 +7,7 @@ import { CloseBtn } from '~/components/CloseBtn';
 const quantityCSS = 'text-base font-semibold p-2';
 
 function MiniCartItem({ id, name, thumb, quantity }) {
-    const price = id.slice(3) * quantity;
+    const price = Number(id.slice(3)) * quantity;
 
     const remove = () => {
         console.log('removed');

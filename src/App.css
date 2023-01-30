@@ -47,7 +47,7 @@
 @layer components {
     /* page wrapper */
     .section-wrapper {
-        @apply mt-16 mx-5;
+        @apply mt-20 mx-5;
     }
 
     /* NAV ITEM */
@@ -81,4 +81,10 @@
     .from-error {
         @apply text-red-400;
     }
+}
+
+.stroke {
+    -webkit-text-fill-color: #f6f6f6;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #115e5c;
 }

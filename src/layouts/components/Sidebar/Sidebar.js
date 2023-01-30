@@ -2,21 +2,26 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { getCategories } from '~/services';
+import useGetCategories from '~/hooks/useGetCategories';
 
 function Sidebar() {
-    const [categories, setCategories] = useState([]);
     const params = useParams();
+    const categoriesData = useGetCategories();
+    const [categories, setCategories] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
-        const fetchApi = async () => {
-            const results = await getCategories();
+        if (categoriesData === 'loading') setIsLoading(true);
 
-            setCategories(results.drinks);
-        };
+        if (categoriesData?.drinks) {
+            setCategories(categoriesData.drinks);
+            setIsLoading(false);
+            setIsError(false);
+        }
 
-        fetchApi();
-    }, []);
+        if (categoriesData === 'have error') setIsError(true);
+    }, [categoriesData]);
 
     return (
         <ul className="flex items-center justify-between h-16 bg-ap-bg px-20">
@@ -32,6 +37,9 @@ function Sidebar() {
                     </Link>
                 </li>
             ))}
+
+            {isLoading && <li>Loading...</li>}
+            {isError && <li>Have error</li>}
         </ul>
     );
 }
