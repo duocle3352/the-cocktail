@@ -4,11 +4,12 @@ import { Formik, Form, FastField, Field } from 'formik';
 import * as Yup from 'yup';
 import { BsFacebook } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-
-import { FormTitle } from '../FormTitle';
-import { SocialBtn } from '../SocialBtn';
-import { InputField } from '~/components/custom-fields';
 import { Link } from 'react-router-dom';
+
+import { FormTitle } from '~/components/FormTitle';
+import { SocialBtn } from '~/components/SocialBtn';
+import { InputField } from '~/components/custom-fields';
+import { Button } from '~/components/Button';
 
 function RegisterForm({ onShowSignIn }) {
     const initialValues = {
@@ -156,12 +157,9 @@ function RegisterForm({ onShowSignIn }) {
                                 </label>
 
                                 <div className="flex justify-center">
-                                    <button
-                                        type="submit"
-                                        className="w-[300px] btn-primary text-white text-lg py-[8px]  mt-5 rounded-xl"
-                                    >
+                                    <Button type="submit" btnPrimaryGreen classes="w-[300px] mt-5">
                                         Register
-                                    </button>
+                                    </Button>
                                 </div>
                             </Form>
                         );

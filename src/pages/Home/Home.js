@@ -1,5 +1,6 @@
 import { ShopService } from '~/components/ShopService';
 import { ProductCart } from '~/components/ProductCart';
+import { SectionHeader } from '~/components/SectionHeader';
 import { shopYourFavorites } from '~/data';
 import videos from '~/assets/videos';
 import images from '~/assets/images';
@@ -50,6 +51,10 @@ function Home() {
                         />
                     ))}
                 </div>
+            </section>
+
+            <section className="section-wrapper">
+                <SectionHeader title="Suggestion" subtitle="for you" isShowBtn />
             </section>
         </>
     );

@@ -10,6 +10,7 @@ import config from '~/config';
 import { Link } from 'react-router-dom';
 import { FormTitle } from '../FormTitle';
 import { SocialBtn } from '../SocialBtn';
+import { Button } from '../Button';
 
 function SignInForm({ onShowRegister }) {
     const initialValues = {
@@ -84,18 +85,15 @@ function SignInForm({ onShowRegister }) {
                                 placeholder="Password*"
                             />
 
-                            <div className="flex justify-center text-xs mt-2">
+                            <div className="flex justify-center text-xs my-2">
                                 <Link to={config.routes.home} className="text-primary-orange">
                                     Forgotten Your Password?
                                 </Link>
                             </div>
 
-                            <button
-                                type="submit"
-                                className="btn-full-width btn-primary text-white text-lg py-[6px] mt-5 rounded-xl"
-                            >
+                            <Button type="submit" btnPrimaryGreen btnFullWidth>
                                 Sign In
-                            </button>
+                            </Button>
                         </Form>
                     );
                 }}

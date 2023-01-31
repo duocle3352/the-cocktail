@@ -65,12 +65,47 @@
     }
 
     /* btn */
-    .btn-full-width {
-        @apply flex items-center justify-center w-full border-2 border-solid rounded-xl;
+    .btn-wrapper {
+        @apply inline-flex items-center justify-center
+            text-base font-semibold font-openSans
+            min-w-[70px] py-[13px] px-[28px] bg-transparent
+            border-[1px] border-solid border-transparent rounded-[10px]
+            cursor-pointer select-none;
     }
 
-    .btn-primary {
-        @apply bg-primary-green;
+    .btn-wrapper + .btn-wrapper {
+        @apply ml-2;
+    }
+
+    /* .btn-rounded {
+        @apply;
+    } */
+
+    .btn-primary-green {
+        @apply text-white bg-primary-green border-primary-green
+            hover:text-primary-green hover:bg-white;
+    }
+
+    .btn-primary-orange {
+        @apply text-white bg-primary-orange border-primary-orange
+            hover:text-primary-orange hover:bg-white;
+    }
+
+    .btn-outline {
+        @apply text-primary-green border-current
+                hover:border-current hover:bg-primary-bg hover:opacity-80;
+    }
+
+    .btn-small {
+        @apply py-[10px] px-[20px];
+    }
+
+    .btn-large {
+        @apply text-xl min-w-[140px] py-[15px] px-[22px];
+    }
+
+    .btn-full-width {
+        @apply w-full;
     }
 
     /* form */

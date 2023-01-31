@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { NumericFormat } from 'react-number-format';
 import { AiOutlineClose } from 'react-icons/ai';
 import HeadlessTippy from '@tippyjs/react/headless';
@@ -8,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { PopperWrapper } from '~/components/PopperWrapper';
 import { MiniCartItem } from '~/components/MiniCartItem';
 import { CloseBtn } from '~/components/CloseBtn';
+import { Button } from '~/components/Button';
 import config from '~/config';
 
 function MiniCart({ children, showCart, onToggleCart }) {
@@ -42,7 +42,7 @@ function MiniCart({ children, showCart, onToggleCart }) {
                         </div>
 
                         {/* total price */}
-                        <div className="flex items-center justify-between pt-2 mt-5 border-t-2 border-borderColor">
+                        <div className="flex items-center justify-between pt-2 my-5 border-t-2 border-borderColor">
                             <span className="text-lg font-semibold">SUBTOTAL:</span>
                             <NumericFormat
                                 value={100}
@@ -58,13 +58,16 @@ function MiniCart({ children, showCart, onToggleCart }) {
                         </div>
 
                         {/* checkout */}
-                        <Link
+                        <Button btnFullWidth btnLarge btnPrimaryGreen to={config.routes.cart}>
+                            Checkout
+                        </Button>
+                        {/* <Link
                             to={config.routes.cart}
                             className="btn-full-width text-lg font-semibold text-white 
                                             bg-primary-green py-4 mt-3 hover:opacity-80"
                         >
                             Checkout
-                        </Link>
+                        </Link> */}
                     </PopperWrapper>
                 </div>
             )}
