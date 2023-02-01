@@ -11,6 +11,7 @@ const images = {
     draws1: require('~/assets/images/draw-1.webp'),
     draws2: require('~/assets/images/draw-2.webp'),
     draws3: require('~/assets/images/draw-3.webp'),
+    drawGlass: require('~/assets/images/drawGlass.jpg'),
 };
 
 export default images;

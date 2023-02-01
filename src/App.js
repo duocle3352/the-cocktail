@@ -6,12 +6,14 @@ import './App.css';
 
 import { useDispatch } from 'react-redux';
 import { getCategories } from '~/state/features/categoriesSlice';
+import { getNonAlcoholic } from '~/state/features/nonAlcoholicSlice';
 
 function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getCategories());
+        dispatch(getNonAlcoholic());
     }, [dispatch]);
 
     return (

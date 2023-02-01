@@ -47,7 +47,7 @@
 @layer components {
     /* page wrapper */
     .section-wrapper {
-        @apply mt-20 mx-5;
+        @apply mt-20 mx-9;
     }
 
     /* NAV ITEM */
