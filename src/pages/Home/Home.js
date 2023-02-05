@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react';
 import { ShopService } from '~/components/ShopService';
-import { ProductCart } from '~/components/ProductCart';
+import { ProductItem } from '~/components/ProductItem';
+import { DetailItem } from '~/components/DetailItem';
 import { SectionHeader } from '~/components/SectionHeader';
-import { shopYourFavorites } from '~/data';
 import { useGetNonAlcoholic } from '~/hooks';
+import { getRandomCocktailService } from '~/services';
+import { shopYourFavorites } from '~/data';
 import videos from '~/assets/videos';
 import images from '~/assets/images';
 
@@ -12,6 +15,24 @@ function Home() {
     if (nonAlcoholic?.drinks) listNonAlcoholic = nonAlcoholic.drinks;
     // get 10 item Non Alcoholic
     const newListNonAlcoholic = listNonAlcoholic.slice(0, 10);
+
+    const [randomItem1, setRandomItem1] = useState({});
+    const [randomItem2, setRandomItem2] = useState({});
+
+    useEffect(() => {
+        const fetchApi1 = async () => {
+            const result = await getRandomCocktailService();
+            setRandomItem1(result.drinks[0]);
+        };
+
+        const fetchApi2 = async () => {
+            const result = await getRandomCocktailService();
+            setRandomItem2(result.drinks[0]);
+        };
+
+        fetchApi1();
+        fetchApi2();
+    }, []);
 
     return (
         <>
@@ -46,7 +67,7 @@ function Home() {
                 <SectionHeader title="Shop" subtitle="Your Favorites" />
                 <div className="grid grid-cols-5 gap-x-6 gap-y-8">
                     {shopYourFavorites.map((product) => (
-                        <ProductCart
+                        <ProductItem
                             key={product.idDrink}
                             id={product.idDrink}
                             name={product.strDrink}
@@ -61,7 +82,7 @@ function Home() {
                 <SectionHeader
                     title="Non"
                     subtitle="Alcoholic"
-                    link="./category/non-alcoholic"
+                    link="/collection/non-alcoholic"
                     isShowBtn
                 />
                 <div
@@ -71,10 +92,10 @@ function Home() {
                     <img src={images.drawGlass} alt="draw" className="h-[200px] object-contain" />
                     <div
                         className="w-full grid grid-cols-5 gap-x-6 gap-y-8 
-                                bg-ap-bg py-12 px-10 rounded-t-xl"
+                                bg-primary-bg py-12 px-10 rounded-t-xl"
                     >
                         {newListNonAlcoholic.map((product) => (
-                            <ProductCart
+                            <ProductItem
                                 key={product.idDrink}
                                 id={product.idDrink}
                                 name={product.strDrink}
@@ -85,12 +106,28 @@ function Home() {
                 </div>
             </section>
 
-            {/* <section className="section-wrapper">
-                <SectionHeader title="Suggestion " subtitle="For Today" />
-                <div className="bg-light-blue-bg py-12 px-9 -mx-9">
-                    <h2>lorem</h2>
-                </div>
-            </section> */}
+            <section className="section-wrapper">
+                <SectionHeader title="Selected " subtitle="For You" />
+                <DetailItem
+                    id={randomItem1.idDrink}
+                    name={randomItem1.strDrink}
+                    type={randomItem1.strCategory}
+                    alcoholic={randomItem1.strAlcoholic}
+                    glass={randomItem1.strGlass}
+                    description={randomItem1.strInstructions}
+                    image={randomItem1.strDrinkThumb}
+                />
+                <DetailItem
+                    className="flex-row-reverse"
+                    id={randomItem2.idDrink}
+                    name={randomItem2.strDrink}
+                    type={randomItem2.strCategory}
+                    alcoholic={randomItem2.strAlcoholic}
+                    glass={randomItem2.strGlass}
+                    description={randomItem2.strInstructions}
+                    image={randomItem2.strDrinkThumb}
+                />
+            </section>
         </>
     );
 }

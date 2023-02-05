@@ -26,10 +26,8 @@ function ShopService({ videoSource, imageSource, title, topDescription, bottomDe
             </video>
 
             <h3
-                className={`relative font-semibold max-w-max mb-2 bg-transparent z-10
-                            before:absolute before:-bottom-1 before:left-0 before:z-[-1]
-                            before:w-full before:h-5 before:bg-[#fadac5]
-                            group-hover:translate-x-5 ${transitionState} `}
+                className={`font-semibold max-w-max mb-2 bg-transparent text-underline
+                             group-hover:translate-x-5 ${transitionState} `}
             >
                 {title}
             </h3>

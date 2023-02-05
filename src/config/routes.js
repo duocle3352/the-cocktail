@@ -7,6 +7,7 @@ const routes = {
     detail: '/detail/:id',
     cart: '/cart',
     category: '/category/:type',
+    collection: '/collection/:type',
 };
 
 export default routes;

@@ -4,7 +4,7 @@ import { NumericFormat } from 'react-number-format';
 import { Link } from 'react-router-dom';
 import useGetCategories from '~/hooks/useGetCategories';
 
-function ProductCart({ id, name, image, type }) {
+function ProductItem({ id, name, image, type }) {
     const price = Number(id.slice(3));
     const categoriesData = useGetCategories();
     let categoryIndex;
@@ -19,8 +19,8 @@ function ProductCart({ id, name, image, type }) {
         <div>
             <div className="relative">
                 <button
-                    className="group/add absolute top-4 right-4 z-[1] bg-white rounded-lg
-                             p-1 hover:bg-primary-green"
+                    className="group/add absolute top-4 right-4 z-[1] bg-white rounded-lg p-1
+                            border-2 border-solid border-primary-green hover:bg-primary-green"
                 >
                     <BiPlus className="group-hover/add:text-white" size="1rem" />
                 </button>
@@ -59,11 +59,11 @@ function ProductCart({ id, name, image, type }) {
     );
 }
 
-ProductCart.propTypes = {
+ProductItem.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     type: PropTypes.string,
 };
 
-export default ProductCart;
+export default ProductItem;
