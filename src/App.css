@@ -130,3 +130,9 @@
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #115e5c;
 }
+
+.stroke-green {
+    -webkit-text-fill-color: #115e5d;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #f6f6f6;
+}
