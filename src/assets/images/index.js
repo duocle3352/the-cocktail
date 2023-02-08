@@ -12,6 +12,17 @@ const images = {
     draws2: require('~/assets/images/draw-2.webp'),
     draws3: require('~/assets/images/draw-3.webp'),
     drawGlass: require('~/assets/images/drawGlass.jpg'),
+    collectionCocktail: require('~/assets/images/collection-cocktail.jpg'),
+    collectionShake: require('~/assets/images/collection-shake.jpg'),
+    collectionShot: require('~/assets/images/collection-shot.jpg'),
+    collectionBeer: require('~/assets/images/collection-beer.jpg'),
+    collectionCocoa: require('~/assets/images/collection-cocoa.jpg'),
+    collectionCoffeeTea: require('~/assets/images/collection-coffee-tea.png'),
+    collectionHomemade: require('~/assets/images/collection-homemade.jpg'),
+    collectionOrdinary: require('~/assets/images/collection-ordinary.jpg'),
+    collectionOther: require('~/assets/images/collection-other.jpg'),
+    collectionParty: require('~/assets/images/collection-party.jpg'),
+    collectionSoft: require('~/assets/images/collection-soft.jpg'),
 };
 
 export default images;

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+
 import { ShopService } from '~/components/ShopService';
 import { ProductItem } from '~/components/ProductItem';
 import { DetailItem } from '~/components/DetailItem';
 import { SectionHeader } from '~/components/SectionHeader';
+import { FeaturedCollections } from '~/components/FeaturedCollections';
 import { useGetNonAlcoholic } from '~/hooks';
 import { getRandomCocktailService } from '~/services';
 import { shopYourFavorites } from '~/data';
@@ -37,7 +39,7 @@ function Home() {
     return (
         <>
             {/* shop services */}
-            <section className="grid grid-cols-3 group/services">
+            <section className="section-wrapper grid grid-cols-3 group/services">
                 <ShopService
                     videoSource={videos.draw1}
                     imageSource={images.draws1}
@@ -127,6 +129,11 @@ function Home() {
                     description={randomItem2.strInstructions}
                     image={randomItem2.strDrinkThumb}
                 />
+            </section>
+
+            <section className="section-wrapper">
+                <SectionHeader title="Featured" subtitle="Collections" />
+                <FeaturedCollections />
             </section>
         </>
     );

@@ -7,7 +7,7 @@ function ShopService({ videoSource, imageSource, title, topDescription, bottomDe
     return (
         <div
             className={`group relative flex justify-center flex-col
-                        h-[160px] px-12 bg-primary-bg rounded-xl mx-5
+                        h-[160px] px-12 bg-primary-bg rounded-xl mx-10
                         group-hover/services:h-[180px] ${transitionState}`}
         >
             <img className={`${drawState} z-[1] group-hover:z-0`} src={imageSource} alt="draw" />

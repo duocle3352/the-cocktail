@@ -30,7 +30,7 @@ function DetailItem({
     const alcoholicCollect = alcoholic.replace(/ /g, '_');
     const glassCollect = glass.replace(/ /g, '_');
 
-    const ConnectLink = (to, title) => {
+    const ConnectLink = ({ to, title }) => {
         return (
             <Link
                 to={to}
@@ -57,9 +57,9 @@ function DetailItem({
         >
             <div className="w-[500px]">
                 {/* Connect links */}
-                {ConnectLink(`category/${categoryIndex}`, type)}
-                {ConnectLink(`collection/${alcoholicCollect}`, alcoholic)}
-                {ConnectLink(`collection/${glassCollect}`, glass)}
+                <ConnectLink to={`category/${categoryIndex}`} title={type} />
+                <ConnectLink to={`collection/${alcoholicCollect}`} title={alcoholic} />
+                <ConnectLink to={`collection/${glassCollect}`} title={glass} />
                 {/* title */}
                 <h4 className=" mt-3">{name}</h4>
 
