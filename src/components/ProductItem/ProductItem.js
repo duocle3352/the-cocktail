@@ -4,16 +4,24 @@ import { NumericFormat } from 'react-number-format';
 import { Link } from 'react-router-dom';
 import useGetCategories from '~/hooks/useGetCategories';
 
-function ProductItem({ id, name, image, type }) {
-    const price = Number(id.slice(3));
-    const categoriesData = useGetCategories();
-    let categoryIndex;
+import { useDispatch } from 'react-redux';
+import { addToCart } from '~/state/features/cartSlice';
 
-    if (categoriesData?.drinks) {
+function ProductItem({ item }) {
+    const dispatch = useDispatch();
+    const categoriesData = useGetCategories();
+
+    const { idDrink, strDrink, strCategory, strDrinkThumb } = item;
+    const price = Number(idDrink.slice(3));
+    let categoryIndex;
+    if (categoriesData?.drinks && strCategory) {
         categoryIndex = categoriesData.drinks.findIndex(
-            (category) => category.strCategory === type,
+            (category) => category.strCategory === strCategory,
         );
     }
+
+    // item dispatch
+    const newItem = { id: idDrink, name: strDrink, price, image: strDrinkThumb, type: strCategory };
 
     return (
         <div>
@@ -21,27 +29,32 @@ function ProductItem({ id, name, image, type }) {
                 <button
                     className="group/add absolute top-4 right-4 z-[1] bg-white rounded-lg p-1
                             border-2 border-solid border-primary-green hover:bg-primary-green"
+                    onClick={() => dispatch(addToCart(newItem))}
                 >
                     <BiPlus className="group-hover/add:text-white" size="1rem" />
                 </button>
 
-                <Link to={`./detail/${id}`} className="block rounded-xl overflow-hidden ">
-                    <img className="hover:scale-110 transition-all" src={image} alt={name} />
+                <Link to={`./detail/${idDrink}`} className="block rounded-xl overflow-hidden ">
+                    <img
+                        className="hover:scale-110 transition-all"
+                        src={strDrinkThumb}
+                        alt={strDrink}
+                    />
                 </Link>
             </div>
             <div className="pt-2">
                 <Link
-                    to={`./detail/${id}`}
+                    to={`./detail/${idDrink}`}
                     className="block text-lg font-semibold hover:text-primary-green"
                 >
-                    {name}
+                    {strDrink}
                 </Link>
 
                 <Link
                     to={`./category/${categoryIndex}`}
                     className="block text-darkLightText text-sm hover:text-primary-green"
                 >
-                    {type}
+                    {strCategory}
                 </Link>
 
                 <NumericFormat
@@ -60,10 +73,7 @@ function ProductItem({ id, name, image, type }) {
 }
 
 ProductItem.propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    type: PropTypes.string,
+    item: PropTypes.object.isRequired,
 };
 
 export default ProductItem;

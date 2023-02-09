@@ -1,20 +1,27 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { publicRoutes } from '~/routes';
 import { DefaultLayout } from './layouts';
-import './App.css';
-
-import { useDispatch } from 'react-redux';
 import { getCategories } from '~/state/features/categoriesSlice';
 import { getNonAlcoholic } from '~/state/features/nonAlcoholicSlice';
+import { total } from './state/features/cartSlice';
+import './App.css';
 
 function App() {
     const dispatch = useDispatch();
+    const { cartItems } = useSelector((state) => state.cart);
 
     useEffect(() => {
         dispatch(getCategories());
         dispatch(getNonAlcoholic());
-    }, [dispatch]);
+    }, []);
+
+    useEffect(() => {
+        dispatch(total());
+    }, [cartItems]);
 
     return (
         <Router>

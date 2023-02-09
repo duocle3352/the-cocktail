@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react';
-
 import { ShopService } from '~/components/ShopService';
 import { ProductItem } from '~/components/ProductItem';
-import { DetailItem } from '~/components/DetailItem';
 import { SectionHeader } from '~/components/SectionHeader';
 import { FeaturedCollections } from '~/components/FeaturedCollections';
+import { SelectedSection } from '~/components/SelectedSection';
 import { useGetNonAlcoholic } from '~/hooks';
-import { getRandomCocktailService } from '~/services';
 import { shopYourFavorites } from '~/data';
 import videos from '~/assets/videos';
 import images from '~/assets/images';
@@ -17,24 +14,6 @@ function Home() {
     if (nonAlcoholic?.drinks) listNonAlcoholic = nonAlcoholic.drinks;
     // get 10 item Non Alcoholic
     const newListNonAlcoholic = listNonAlcoholic.slice(0, 10);
-
-    const [randomItem1, setRandomItem1] = useState({});
-    const [randomItem2, setRandomItem2] = useState({});
-
-    useEffect(() => {
-        const fetchApi1 = async () => {
-            const result = await getRandomCocktailService();
-            setRandomItem1(result.drinks[0]);
-        };
-
-        const fetchApi2 = async () => {
-            const result = await getRandomCocktailService();
-            setRandomItem2(result.drinks[0]);
-        };
-
-        fetchApi1();
-        fetchApi2();
-    }, []);
 
     return (
         <>
@@ -68,14 +47,8 @@ function Home() {
             <section className="section-wrapper">
                 <SectionHeader title="Shop" subtitle="Your Favorites" />
                 <div className="grid grid-cols-5 gap-x-6 gap-y-8">
-                    {shopYourFavorites.map((product) => (
-                        <ProductItem
-                            key={product.idDrink}
-                            id={product.idDrink}
-                            name={product.strDrink}
-                            image={product.strDrinkThumb}
-                            type={product.strCategory}
-                        />
+                    {shopYourFavorites.map((item) => (
+                        <ProductItem key={item.idDrink} item={item} />
                     ))}
                 </div>
             </section>
@@ -96,13 +69,8 @@ function Home() {
                         className="w-full grid grid-cols-5 gap-x-6 gap-y-8 
                                 bg-primary-bg py-12 px-10 rounded-t-xl"
                     >
-                        {newListNonAlcoholic.map((product) => (
-                            <ProductItem
-                                key={product.idDrink}
-                                id={product.idDrink}
-                                name={product.strDrink}
-                                image={product.strDrinkThumb}
-                            />
+                        {newListNonAlcoholic.map((item) => (
+                            <ProductItem key={item.idDrink} item={item} />
                         ))}
                     </div>
                 </div>
@@ -110,25 +78,7 @@ function Home() {
 
             <section className="section-wrapper">
                 <SectionHeader title="Selected " subtitle="For You" />
-                <DetailItem
-                    id={randomItem1.idDrink}
-                    name={randomItem1.strDrink}
-                    type={randomItem1.strCategory}
-                    alcoholic={randomItem1.strAlcoholic}
-                    glass={randomItem1.strGlass}
-                    description={randomItem1.strInstructions}
-                    image={randomItem1.strDrinkThumb}
-                />
-                <DetailItem
-                    className="flex-row-reverse"
-                    id={randomItem2.idDrink}
-                    name={randomItem2.strDrink}
-                    type={randomItem2.strCategory}
-                    alcoholic={randomItem2.strAlcoholic}
-                    glass={randomItem2.strGlass}
-                    description={randomItem2.strInstructions}
-                    image={randomItem2.strDrinkThumb}
-                />
+                <SelectedSection />
             </section>
 
             <section className="section-wrapper">

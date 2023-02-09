@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BiSearch, BiCart } from 'react-icons/bi';
 import { AiOutlineClose } from 'react-icons/ai';
 import { NumericFormat } from 'react-number-format';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { Nav } from '~/components/Nav';
 import { NavItem } from '~/components/NavItem';
@@ -24,6 +24,7 @@ function Header() {
     const [isSignInModal, setIsSignInModal] = useState(false);
     const [isShowCart, setIsShowCart] = useState(false);
     const [isSignIn, setIsSignIn] = useState(true);
+    const { amount, total } = useSelector((state) => state.cart);
 
     const toggleSignInModal = () => {
         setIsSignInModal(!isSignInModal);
@@ -91,7 +92,7 @@ function Header() {
                         >
                             <BiCart size="1.5rem" />
                             <NumericFormat
-                                value={100}
+                                value={total}
                                 displayType={'text'}
                                 thousandSeparator={true}
                                 prefix={'$'}
@@ -106,7 +107,7 @@ function Header() {
                                 className="absolute -top-1 -right-2 text-white bg-primary-orange 
                                                 leading-none px-1 py-1 rounded-full"
                             >
-                                2
+                                {amount}
                             </span>
                         </button>
                     </MiniCart>

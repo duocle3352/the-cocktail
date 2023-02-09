@@ -1,34 +1,51 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
-import { BsFillCartPlusFill } from 'react-icons/bs';
-import { NumericFormat } from 'react-number-format';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from '~/components/Button';
+import { NumericFormat } from 'react-number-format';
+import { BsFillCartPlusFill } from 'react-icons/bs';
+
 import useGetCategories from '~/hooks/useGetCategories';
+import { Button } from '~/components/Button';
+import { addToCart } from '~/state/features/cartSlice';
 
-function DetailItem({
-    id = '0',
-    name,
-    type,
-    alcoholic = '',
-    glass = '',
-    description,
-    image,
-    className,
-}) {
-    const [count, setCount] = useState(1);
-    const price = Number(id.slice(3));
-
+function DetailItem({ item, className }) {
+    const dispatch = useDispatch();
     const categoriesData = useGetCategories();
+    const {
+        idDrink,
+        strDrink,
+        strCategory,
+        strAlcoholic,
+        strGlass,
+        strDrinkThumb,
+        strInstructions,
+    } = item;
+
+    let price = 0;
+    let alcoholicCollect;
+    let glassCollect;
+    if (idDrink && strAlcoholic && strGlass) {
+        price = Number(idDrink.slice(3));
+        alcoholicCollect = strAlcoholic.replace(/ /g, '_');
+        glassCollect = strGlass.replace(/ /g, '_');
+    }
+
     let categoryIndex;
     if (categoriesData?.drinks) {
         categoryIndex = categoriesData.drinks.findIndex(
-            (category) => category.strCategory === type,
+            (category) => category.strCategory === strCategory,
         );
     }
 
-    const alcoholicCollect = alcoholic.replace(/ /g, '_');
-    const glassCollect = glass.replace(/ /g, '_');
+    // item dispatch
+    const newItem = {
+        id: idDrink,
+        name: strDrink,
+        category: strCategory,
+        price: price,
+        image: strDrinkThumb,
+        description: strInstructions,
+    };
 
     const ConnectLink = ({ to, title }) => {
         return (
@@ -41,15 +58,6 @@ function DetailItem({
         );
     };
 
-    const handleCount = (option) => {
-        if (option === 'count up') {
-            setCount(count + 1);
-        } else {
-            if (count === 1) setCount(count);
-            if (count > 1) setCount(count - 1);
-        }
-    };
-
     return (
         <div
             className={`flex items-center justify-around -mx-9 py-12 px-24
@@ -57,72 +65,43 @@ function DetailItem({
         >
             <div className="w-[500px]">
                 {/* Connect links */}
-                <ConnectLink to={`category/${categoryIndex}`} title={type} />
-                <ConnectLink to={`collection/${alcoholicCollect}`} title={alcoholic} />
-                <ConnectLink to={`collection/${glassCollect}`} title={glass} />
+                <ConnectLink to={`category/${categoryIndex}`} title={strCategory} />
+                <ConnectLink to={`collection/${alcoholicCollect}`} title={strAlcoholic} />
+                <ConnectLink to={`collection/${glassCollect}`} title={strGlass} />
                 {/* title */}
-                <h4 className=" mt-3">{name}</h4>
-
-                <div className="flex items-center justify-between mt-5">
-                    {/* quality control */}
-                    <div
-                        className="inline-flex items-center justify-around 
-                           w-[100px] border-2 border-borderColor rounded-lg"
-                    >
-                        <button
-                            className={`text-lg px-2 hover:text-primary-orange 
-                                        ${
-                                            count === 1
-                                                ? 'text-darkLightText cursor-default hover:text-darkLightText'
-                                                : ''
-                                        }`}
-                            onClick={() => handleCount()}
-                        >
-                            -
-                        </button>
-                        <span>{count}</span>
-                        <button
-                            className="text-lg px-2 hover:text-primary-orange"
-                            onClick={() => handleCount('count up')}
-                        >
-                            +
-                        </button>
-                    </div>
-                    {/* price */}
-                    <NumericFormat
-                        value={price}
-                        displayType={'text'}
-                        thousandSeparator={true}
-                        fixedDecimalScale={true}
-                        prefix={'$'}
-                        renderText={(formattedValue) => (
-                            <h3 className="font-bold text-underline">{formattedValue}</h3>
-                        )}
-                    />
-                </div>
+                <h4 className=" mt-3">{strDrink}</h4>
+                {/* price */}
+                <NumericFormat
+                    value={price}
+                    displayType={'text'}
+                    thousandSeparator={true}
+                    fixedDecimalScale={true}
+                    prefix={'$'}
+                    renderText={(formattedValue) => (
+                        <h3 className="inline-block font-bold text-underline">{formattedValue}</h3>
+                    )}
+                />
                 {/* description */}
-                <p className="w-[400px] text-sm text-darkLightText my-10">{description}</p>
-
-                <Button leftIcon={<BsFillCartPlusFill />} btnPrimaryOrange>
+                <p className="w-[400px] text-sm text-darkLightText my-10">{strInstructions}</p>
+                {/* btn add */}
+                <Button
+                    leftIcon={<BsFillCartPlusFill />}
+                    btnPrimaryOrange
+                    onClick={() => dispatch(addToCart(newItem))}
+                >
                     ADD TO CART
                 </Button>
             </div>
             {/* image */}
             <div className="w-[500px]">
-                <img className="w-full" src={image} alt={name} />
+                <img className="w-full" src={strDrinkThumb} alt={strDrink} />
             </div>
         </div>
     );
 }
 
 DetailItem.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    type: PropTypes.string,
-    alcoholic: PropTypes.string,
-    glass: PropTypes.string,
-    description: PropTypes.string,
-    image: PropTypes.string,
+    item: PropTypes.object.isRequired,
     className: PropTypes.string,
 };
 
