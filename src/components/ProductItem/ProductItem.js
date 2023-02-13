@@ -30,7 +30,7 @@ function ProductItem({ item }) {
 
     return (
         <div>
-            <div className="relative">
+            <div className="relative z-0">
                 <button
                     className="group/add absolute top-4 right-4 z-[1] bg-white rounded-lg p-1
                             border-2 border-solid border-primary-green hover:bg-primary-green"
@@ -40,7 +40,7 @@ function ProductItem({ item }) {
                 </button>
 
                 <Link
-                    to={`./detail/${idDrink}`}
+                    to={`/detail/${idDrink}`}
                     className="block rounded-xl overflow-hidden "
                     onClick={() => window.scrollTo(0, 0)}
                 >
@@ -53,7 +53,7 @@ function ProductItem({ item }) {
             </div>
             <div className="pt-2">
                 <Link
-                    to={`./detail/${idDrink}`}
+                    to={`/detail/${idDrink}`}
                     className="block text-lg font-semibold hover:text-primary-green"
                     onClick={() => window.scrollTo(0, 0)}
                 >
@@ -61,7 +61,7 @@ function ProductItem({ item }) {
                 </Link>
 
                 <Link
-                    to={`./category/${categoryIndex}`}
+                    to={`/category/${categoryIndex}`}
                     className="block text-darkLightText text-sm hover:text-primary-green"
                     onClick={() => handleCategoryClick()}
                 >

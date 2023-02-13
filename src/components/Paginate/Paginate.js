@@ -32,7 +32,7 @@ function Paginate({ items, pageSize }) {
     return (
         <>
             <Items currentItems={currentItems} />
-            {pageCount > 2 ? (
+            {pageCount > 1 ? (
                 <ReactPaginate
                     breakLabel="..."
                     nextLabel="Next >"
