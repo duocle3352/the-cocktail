@@ -6,7 +6,7 @@ export const getCategories = createAsyncThunk('categories/getCategories', async 
     return result;
 });
 
-export const categoriesSlice = createSlice({
+export const getCategoriesSlice = createSlice({
     name: 'categories',
     initialState: {
         categories: [],
@@ -37,4 +37,4 @@ export const categoriesSlice = createSlice({
     },
 });
 
-export default categoriesSlice.reducer;
+export default getCategoriesSlice.reducer;

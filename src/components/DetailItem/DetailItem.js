@@ -7,6 +7,7 @@ import { BsFillCartPlusFill } from 'react-icons/bs';
 import useGetCategories from '~/hooks/useGetCategories';
 import { Button } from '~/components/Button';
 import { addToCart } from '~/state/features/cartSlice';
+import { resetPageItem } from '~/state/features/paginationSlice';
 
 function DetailItem({ item, className }) {
     const dispatch = useDispatch();
@@ -47,11 +48,17 @@ function DetailItem({ item, className }) {
         description: strInstructions,
     };
 
+    const handleConnectClick = () => {
+        dispatch(resetPageItem());
+        window.scrollTo(0, 0);
+    };
+
     const ConnectLink = ({ to, title }) => {
         return (
             <Link
                 to={to}
                 className="text-base text-darkLightText font-semibold mr-4 hover:text-primary-orange"
+                onClick={() => handleConnectClick()}
             >
                 {title}
             </Link>

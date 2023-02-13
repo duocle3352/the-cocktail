@@ -48,8 +48,8 @@ function Header() {
 
     return (
         <header
-            className="flex items-center justify-between 
-                        fixed top-0 left-0 w-full h-20 z-50 bg-primary-bg"
+            className="flex items-center justify-between w-full h-20
+                        fixed top-0 left-0 z-50 bg-primary-bg"
         >
             {/* nav */}
             <Nav>
@@ -65,7 +65,7 @@ function Header() {
             </Link>
 
             {/* right tool */}
-            <div className="flex-1 flex items-center justify-end">
+            <div className="flex-1 flex items-center justify-end mr-9">
                 {/* sign btn */}
                 <HeaderRightToolItem>
                     <button

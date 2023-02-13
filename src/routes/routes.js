@@ -1,6 +1,6 @@
 import config from '~/config';
 // layout
-import { HeaderLayout } from '~/layouts';
+import { RightBarLayout } from '~/layouts';
 // page
 import { Home } from '~/pages/Home';
 import { About } from '~/pages/About';
@@ -17,11 +17,11 @@ const publicRoutes = [
     { path: config.routes.about, component: About },
     { path: config.routes.shop, component: Shop },
     { path: config.routes.contact, component: Contact },
-    { path: config.routes.category, component: Category },
-    { path: config.routes.collection, component: Collection },
-    { path: config.routes.search, component: Search, layout: HeaderLayout },
-    { path: config.routes.detail, component: Detail, layout: HeaderLayout },
-    { path: config.routes.cart, component: Cart, layout: HeaderLayout },
+    { path: config.routes.category, component: Category, layout: RightBarLayout },
+    { path: config.routes.collection, component: Collection, layout: RightBarLayout },
+    { path: config.routes.search, component: Search, layout: RightBarLayout },
+    { path: config.routes.detail, component: Detail, layout: RightBarLayout },
+    { path: config.routes.cart, component: Cart, layout: RightBarLayout },
 ];
 
 const privateRoutes = [];

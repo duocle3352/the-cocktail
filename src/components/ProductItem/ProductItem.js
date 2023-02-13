@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import { BiPlus } from 'react-icons/bi';
-import { NumericFormat } from 'react-number-format';
-import { Link } from 'react-router-dom';
-import useGetCategories from '~/hooks/useGetCategories';
-
 import { useDispatch } from 'react-redux';
+import { BiPlus } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+import { NumericFormat } from 'react-number-format';
+import useGetCategories from '~/hooks/useGetCategories';
 import { addToCart } from '~/state/features/cartSlice';
+import { resetPageItem } from '~/state/features/paginationSlice';
 
 function ProductItem({ item }) {
     const dispatch = useDispatch();
@@ -23,6 +23,11 @@ function ProductItem({ item }) {
     // item dispatch
     const newItem = { id: idDrink, name: strDrink, price, image: strDrinkThumb, type: strCategory };
 
+    const handleCategoryClick = () => {
+        dispatch(resetPageItem());
+        window.scrollTo(0, 0);
+    };
+
     return (
         <div>
             <div className="relative">
@@ -34,7 +39,11 @@ function ProductItem({ item }) {
                     <BiPlus className="group-hover/add:text-white" size="1rem" />
                 </button>
 
-                <Link to={`./detail/${idDrink}`} className="block rounded-xl overflow-hidden ">
+                <Link
+                    to={`./detail/${idDrink}`}
+                    className="block rounded-xl overflow-hidden "
+                    onClick={() => window.scrollTo(0, 0)}
+                >
                     <img
                         className="hover:scale-110 transition-all"
                         src={strDrinkThumb}
@@ -46,6 +55,7 @@ function ProductItem({ item }) {
                 <Link
                     to={`./detail/${idDrink}`}
                     className="block text-lg font-semibold hover:text-primary-green"
+                    onClick={() => window.scrollTo(0, 0)}
                 >
                     {strDrink}
                 </Link>
@@ -53,6 +63,7 @@ function ProductItem({ item }) {
                 <Link
                     to={`./category/${categoryIndex}`}
                     className="block text-darkLightText text-sm hover:text-primary-green"
+                    onClick={() => handleCategoryClick()}
                 >
                     {strCategory}
                 </Link>

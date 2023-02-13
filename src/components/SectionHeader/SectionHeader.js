@@ -22,7 +22,7 @@ function SectionHeader({ title, subtitle, isShowBtn, link }) {
 
 SectionHeader.propTypes = {
     title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
     link: PropTypes.string,
     isShowBtn: PropTypes.bool,
 };

@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cartSlice from '~/state/features/cartSlice';
-import categoriesSlice from '~/state/features/categoriesSlice';
-import nonAlcoholicSlice from '../features/nonAlcoholicSlice';
+import getCategoriesSlice from '~/state/features/getCategoriesSlice';
+import nonAlcoholicSlice from '~/state/features/nonAlcoholicSlice';
+import paginationSlice from '~/state/features/paginationSlice';
 
 const store = configureStore({
     reducer: {
         cart: cartSlice,
-        categories: categoriesSlice,
+        categories: getCategoriesSlice,
         alcoholic: nonAlcoholicSlice,
+        pagination: paginationSlice,
     },
 });
 

@@ -1,15 +1,25 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { resetPageItem } from '~/state/features/paginationSlice';
 
 const titleStyle = 'text-white text-2xl font-semibold';
 
 function CollectItem({ to, title, bgColor, bgImg, className }) {
+    const dispatch = useDispatch();
+
+    const handleClick = () => {
+        dispatch(resetPageItem());
+        window.scrollTo(0, 0);
+    };
+
     return (
         <Link
             to={to}
             className={`group flex items-center justify-center
                         relative z-0 m-4 rounded-xl overflow-hidden
                         ${className}`}
+            onClick={() => handleClick()}
         >
             <span
                 className={`absolute left-0 w-full h-full z-[-1]

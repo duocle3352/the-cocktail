@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { publicRoutes } from '~/routes';
 import { DefaultLayout } from './layouts';
-import { getCategories } from '~/state/features/categoriesSlice';
+import { getCategories } from '~/state/features/getCategoriesSlice';
 import { getNonAlcoholic } from '~/state/features/nonAlcoholicSlice';
 import { total } from './state/features/cartSlice';
 import './App.css';
