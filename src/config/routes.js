@@ -7,7 +7,7 @@ const routes = {
     detail: '/detail/:id',
     cart: '/cart',
     category: '/category/:type',
-    collection: '/collection/:type',
+    nonAlcoholic: '/non-alcoholic',
 };
 
 export default routes;

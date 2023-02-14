@@ -3,17 +3,20 @@ import { ProductItem } from '~/components/ProductItem';
 import { SectionHeader } from '~/components/SectionHeader';
 import { FeaturedCollections } from '~/components/FeaturedCollections';
 import { SelectedSection } from '~/components/SelectedSection';
+import { Loading } from '~/components/Loading';
 import { useGetNonAlcoholic } from '~/hooks';
 import { shopYourFavorites } from '~/data';
+import config from '~/config';
 import videos from '~/assets/videos';
 import images from '~/assets/images';
 
 function Home() {
-    const nonAlcoholic = useGetNonAlcoholic();
-    let listNonAlcoholic = [];
-    if (nonAlcoholic?.drinks) listNonAlcoholic = nonAlcoholic.drinks;
+    const nonAlcoholicItems = useGetNonAlcoholic();
     // get 10 item Non Alcoholic
-    const newListNonAlcoholic = listNonAlcoholic.slice(0, 10);
+    let newNonAlcoholicItems = [];
+    if (nonAlcoholicItems) {
+        newNonAlcoholicItems = nonAlcoholicItems.slice(0, 10);
+    }
 
     return (
         <>
@@ -57,7 +60,7 @@ function Home() {
                 <SectionHeader
                     title="Non"
                     subtitle="Alcoholic"
-                    link="/collection/non-alcoholic"
+                    link={config.routes.nonAlcoholic}
                     isShowBtn
                 />
                 <div
@@ -69,9 +72,13 @@ function Home() {
                         className="w-full grid grid-cols-5 gap-x-6 gap-y-8 
                                 bg-primary-bg py-12 px-10 rounded-t-xl"
                     >
-                        {newListNonAlcoholic.map((item) => (
-                            <ProductItem key={item.idDrink} item={item} />
-                        ))}
+                        {newNonAlcoholicItems.length > 0 ? (
+                            newNonAlcoholicItems.map((item) => (
+                                <ProductItem key={item.idDrink} item={item} />
+                            ))
+                        ) : (
+                            <Loading className="text-2xl" />
+                        )}
                     </div>
                 </div>
             </section>

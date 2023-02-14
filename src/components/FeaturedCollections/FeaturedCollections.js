@@ -1,4 +1,4 @@
-import { CollectItem } from '~/components/CollectItem';
+import { FeaturedItem } from '../FeaturedItem';
 import images from '~/assets/images';
 
 function FeaturedCollections() {
@@ -6,7 +6,7 @@ function FeaturedCollections() {
         <div className="grid grid-cols-2">
             <div>
                 <div className="flex">
-                    <CollectItem
+                    <FeaturedItem
                         to="category/1"
                         title="Cocktail"
                         bgImg={images.collectionCocktail}
@@ -14,7 +14,7 @@ function FeaturedCollections() {
                         className="flex-1"
                     />
                     <div className="w-[300px] flex flex-col">
-                        <CollectItem
+                        <FeaturedItem
                             to="category/2"
                             title="Shake"
                             bgImg={images.collectionShake}
@@ -22,7 +22,7 @@ function FeaturedCollections() {
                             className="h-[100px]"
                         />
 
-                        <CollectItem
+                        <FeaturedItem
                             to="category/5"
                             title="Shot"
                             bgImg={images.collectionShot}
@@ -32,21 +32,21 @@ function FeaturedCollections() {
                     </div>
                 </div>
                 <div className="flex justify-between">
-                    <CollectItem
+                    <FeaturedItem
                         to="category/9"
                         title="Beer"
                         bgImg={images.collectionBeer}
                         bgColor="bg-primary-orange"
                         className="flex-1 h-[200px]"
                     />
-                    <CollectItem
+                    <FeaturedItem
                         to="category/0"
                         title="Ordinary"
                         bgImg={images.collectionOrdinary}
                         bgColor="bg-light-blue-bg"
                         className="flex-1 h-[200px]"
                     />
-                    <CollectItem
+                    <FeaturedItem
                         to="category/4"
                         title="Cocoa"
                         bgImg={images.collectionCocoa}
@@ -58,14 +58,14 @@ function FeaturedCollections() {
             <div>
                 <div className="flex">
                     <div className="flex flex-col flex-1">
-                        <CollectItem
+                        <FeaturedItem
                             to="category/8"
                             title="Punch / Party"
                             bgImg={images.collectionParty}
                             bgColor="bg-primary-orange"
                             className="h-[180px]"
                         />
-                        <CollectItem
+                        <FeaturedItem
                             to="category/10"
                             title="Soft Drink"
                             bgImg={images.collectionSoft}
@@ -74,14 +74,14 @@ function FeaturedCollections() {
                         />
                     </div>
                     <div className="flex flex-col flex-1">
-                        <CollectItem
+                        <FeaturedItem
                             to="category/7"
                             title="Homemade Liqueur"
                             bgImg={images.collectionHomemade}
                             bgColor="bg-primary-green"
                             className="h-[91px]"
                         />
-                        <CollectItem
+                        <FeaturedItem
                             to="category/6"
                             title="Coffee / Tea"
                             bgImg={images.collectionCoffeeTea}
@@ -90,7 +90,7 @@ function FeaturedCollections() {
                         />
                     </div>
                 </div>
-                <CollectItem
+                <FeaturedItem
                     to="category/3"
                     title="Other / Unknown"
                     bgImg={images.collectionOther}

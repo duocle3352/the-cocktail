@@ -12,23 +12,13 @@ import { resetPageItem } from '~/state/features/paginationSlice';
 function DetailItem({ item, className }) {
     const dispatch = useDispatch();
     const categoriesData = useGetCategories();
-    const {
-        idDrink,
-        strDrink,
-        strCategory,
-        strAlcoholic,
-        strGlass,
-        strDrinkThumb,
-        strInstructions,
-    } = item;
+    const { idDrink, strDrink, strCategory, strAlcoholic, strDrinkThumb, strInstructions } = item;
 
     let price = 0;
     let alcoholicCollect;
-    let glassCollect;
-    if (idDrink && strAlcoholic && strGlass) {
+    if (idDrink && strAlcoholic) {
         price = Number(idDrink.slice(3));
         alcoholicCollect = strAlcoholic.replace(/ /g, '_');
-        glassCollect = strGlass.replace(/ /g, '_');
     }
 
     let categoryIndex;
@@ -74,7 +64,6 @@ function DetailItem({ item, className }) {
                 {/* Connect links */}
                 <ConnectLink to={`category/${categoryIndex}`} title={strCategory} />
                 <ConnectLink to={`collection/${alcoholicCollect}`} title={strAlcoholic} />
-                <ConnectLink to={`collection/${glassCollect}`} title={strGlass} />
                 {/* title */}
                 <h4 className=" mt-3">{strDrink}</h4>
                 {/* price */}

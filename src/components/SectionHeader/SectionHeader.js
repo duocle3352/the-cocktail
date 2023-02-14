@@ -12,7 +12,7 @@ function SectionHeader({ title, subtitle, isShowBtn, link }) {
                 <span className="block stroke tracking-wider">{subtitle}</span>
             </p>
             {isShowBtn && (
-                <Button to={link} btnOutline>
+                <Button to={link} btnOutline onClick={() => window.scrollTo(0, 0)}>
                     Show all
                 </Button>
             )}

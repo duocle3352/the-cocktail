@@ -9,7 +9,7 @@ export const getNonAlcoholic = createAsyncThunk('alcoholic/getNonAlcoholic', asy
 export const nonAlcoholicSlice = createSlice({
     name: 'alcoholic',
     initialState: {
-        nonAlcoholic: [],
+        nonAlcoholic: {},
         isLoading: false,
         hasError: false,
     },

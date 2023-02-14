@@ -5,7 +5,7 @@ import { resetPageItem } from '~/state/features/paginationSlice';
 
 const titleStyle = 'text-white text-2xl font-semibold';
 
-function CollectItem({ to, title, bgColor, bgImg, className }) {
+function FeaturedItem({ to, title, bgColor, bgImg, className }) {
     const dispatch = useDispatch();
 
     const handleClick = () => {
@@ -39,7 +39,7 @@ function CollectItem({ to, title, bgColor, bgImg, className }) {
     );
 }
 
-CollectItem.propTypes = {
+FeaturedItem.propTypes = {
     title: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
     bgImg: PropTypes.string.isRequired,
@@ -47,4 +47,4 @@ CollectItem.propTypes = {
     className: PropTypes.string,
 };
 
-export default CollectItem;
+export default FeaturedItem;
