@@ -12,14 +12,18 @@ import { resetPageItem } from '~/state/features/paginationSlice';
 function DetailItem({ item, className }) {
     const dispatch = useDispatch();
     const categoriesData = useGetCategories();
-    const { idDrink, strDrink, strCategory, strAlcoholic, strDrinkThumb, strInstructions } = item;
+    const {
+        idDrink,
+        strDrink,
+        strCategory,
+        strAlcoholic,
+        strGlass,
+        strDrinkThumb,
+        strInstructions,
+    } = item;
 
     let price = 0;
-    let alcoholicCollect;
-    if (idDrink && strAlcoholic) {
-        price = Number(idDrink.slice(3));
-        alcoholicCollect = strAlcoholic.replace(/ /g, '_');
-    }
+    if (idDrink) price = Number(idDrink.slice(3));
 
     let categoryIndex;
     if (categoriesData?.drinks) {
@@ -43,27 +47,30 @@ function DetailItem({ item, className }) {
         window.scrollTo(0, 0);
     };
 
-    const ConnectLink = ({ to, title }) => {
-        return (
-            <Link
-                to={to}
-                className="text-base text-darkLightText font-semibold mr-4 hover:text-primary-orange"
-                onClick={() => handleConnectClick()}
-            >
-                {title}
-            </Link>
-        );
-    };
-
     return (
         <div
             className={`flex items-center justify-around -mx-9 py-12 px-24
                         ${className}`}
         >
             <div className="w-[500px]">
-                {/* Connect links */}
-                <ConnectLink to={`category/${categoryIndex}`} title={strCategory} />
-                <ConnectLink to={`collection/${alcoholicCollect}`} title={strAlcoholic} />
+                <Link
+                    to={`category/${categoryIndex}`}
+                    className="text-base text-primary-orange font-semibold hover:text-primary-orange
+                                px-2 -ml-2 border-2 border-primary-orange rounded-full"
+                    onClick={() => handleConnectClick()}
+                >
+                    {strCategory}
+                </Link>
+
+                <div className="flex">
+                    <p className="text-base text-darkLightText font-semibold mt-2">
+                        {strAlcoholic}
+                    </p>
+                    <p className="text-base text-darkLightText font-semibold mt-2 ml-5">
+                        {strGlass}
+                    </p>
+                </div>
+
                 {/* title */}
                 <h4 className=" mt-3">{strDrink}</h4>
                 {/* price */}
