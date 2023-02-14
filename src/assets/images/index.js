@@ -1,6 +1,9 @@
 const images = {
     logo: require('~/assets/images/logo.png'),
     formBg: require('~/assets/images/form-bg.jpg'),
+    drawGlass: require('~/assets/images/drawGlass.jpg'),
+    sad404: require('~/assets/images/sad_404.png'),
+    //
     banners: [
         require('~/assets/images/banner1.jpg'),
         require('~/assets/images/banner2.jpg'),
@@ -8,10 +11,11 @@ const images = {
         require('~/assets/images/banner4.jpg'),
         require('~/assets/images/banner5.jpg'),
     ],
+    //
     draws1: require('~/assets/images/draw-1.webp'),
     draws2: require('~/assets/images/draw-2.webp'),
     draws3: require('~/assets/images/draw-3.webp'),
-    drawGlass: require('~/assets/images/drawGlass.jpg'),
+    //
     collectionCocktail: require('~/assets/images/collection-cocktail.jpg'),
     collectionShake: require('~/assets/images/collection-shake.jpg'),
     collectionShot: require('~/assets/images/collection-shot.jpg'),
