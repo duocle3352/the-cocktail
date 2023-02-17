@@ -28,7 +28,7 @@ function InputField({ field, form, type = 'text', label = '', placeholder = '', 
                 className={`text-base px-2 py-2  border-2 border-borderColor border-solid rounded-xl ${
                     showError ? 'border-red-400' : ''
                 }`}
-                id={name}
+                // id={name}
                 {...field}
                 type={inputType}
                 placeholder={placeholder}

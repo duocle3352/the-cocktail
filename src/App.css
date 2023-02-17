@@ -64,6 +64,11 @@
         @apply text-primary-orange after:h-[2px] after:translate-x-0;
     }
 
+    /* right tool */
+    .right-tool-style {
+        @apply flex items-center relative bg-white p-3 rounded-xl;
+    }
+
     /* btn */
     .btn-wrapper {
         @apply inline-flex items-center justify-center

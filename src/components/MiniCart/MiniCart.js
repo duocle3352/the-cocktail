@@ -59,6 +59,7 @@ function MiniCart({ children, showCart, onToggleCart }) {
                 </div>
             )}
         >
+            {/* children */}
             {children}
         </HeadlessTippy>
     );

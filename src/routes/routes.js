@@ -4,7 +4,6 @@ import { RightBarLayout, HeaderLayout } from '~/layouts';
 
 // page
 import { Home } from '~/pages/Home';
-import { Search } from '~/pages/Search';
 import { Detail } from '~/pages/Detail';
 import { Cart } from '~/pages/Cart';
 import { Category } from '~/pages/Category';
@@ -16,7 +15,6 @@ const publicRoutes = [
     { path: config.routes.cart, component: Cart },
     { path: config.routes.category, component: Category, layout: RightBarLayout },
     { path: config.routes.nonAlcoholic, component: NonAlcoholic, layout: HeaderLayout },
-    { path: config.routes.search, component: Search, layout: HeaderLayout },
     { path: config.routes.detail, component: Detail, layout: HeaderLayout },
     { path: config.routes.about, component: Error, layout: HeaderLayout },
     { path: config.routes.shop, component: Error, layout: HeaderLayout },
