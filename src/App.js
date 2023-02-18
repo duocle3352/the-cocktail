@@ -7,12 +7,21 @@ import { publicRoutes } from '~/routes';
 import { DefaultLayout } from './layouts';
 import { getCategories } from '~/state/features/getCategoriesSlice';
 import { getNonAlcoholic } from '~/state/features/nonAlcoholicSlice';
-import { total } from './state/features/cartSlice';
+import { total, saveCart } from './state/features/cartSlice';
 import './App.css';
 
 function App() {
     const dispatch = useDispatch();
     const { cartItems } = useSelector((state) => state.cart);
+
+    useEffect(() => {
+        const cart = {
+            cartItems: [],
+            amount: 0,
+            total: 0,
+        };
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }, []);
 
     useEffect(() => {
         dispatch(getCategories());
@@ -21,6 +30,7 @@ function App() {
 
     useEffect(() => {
         dispatch(total());
+        dispatch(saveCart());
     }, [cartItems]);
 
     return (
