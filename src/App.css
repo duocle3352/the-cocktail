@@ -113,6 +113,10 @@
         @apply w-full;
     }
 
+    .btn-disabled {
+        @apply text-darkLightText bg-gray-400 border-gray-400 cursor-default;
+    }
+
     /* form */
     .form-label {
         @apply font-semibold;

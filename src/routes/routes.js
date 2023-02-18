@@ -12,8 +12,8 @@ import { Error } from '~/pages/Error';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
-    { path: config.routes.cart, component: Cart },
     { path: config.routes.category, component: Category, layout: RightBarLayout },
+    { path: config.routes.cart, component: Cart, layout: HeaderLayout },
     { path: config.routes.nonAlcoholic, component: NonAlcoholic, layout: HeaderLayout },
     { path: config.routes.detail, component: Detail, layout: HeaderLayout },
     { path: config.routes.about, component: Error, layout: HeaderLayout },

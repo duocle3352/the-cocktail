@@ -3,6 +3,7 @@ const images = {
     formBg: require('~/assets/images/form-bg.jpg'),
     drawGlass: require('~/assets/images/drawGlass.jpg'),
     sad404: require('~/assets/images/sad_404.png'),
+    emptyCart: require('~/assets/images/empty-cart.png'),
     //
     banners: [
         require('~/assets/images/banner1.jpg'),

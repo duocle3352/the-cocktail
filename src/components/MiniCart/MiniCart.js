@@ -9,6 +9,7 @@ import { MiniCartItem } from '~/components/MiniCartItem';
 import { CloseBtn } from '~/components/CloseBtn';
 import { Button } from '~/components/Button';
 import config from '~/config';
+import images from '~/assets/images';
 
 function MiniCart({ children, showCart, onToggleCart }) {
     const { total, cartItems, amount } = useSelector((state) => state.cart);
@@ -30,9 +31,11 @@ function MiniCart({ children, showCart, onToggleCart }) {
 
                         {/* cart item */}
                         <div className="max-h-[400px] w-[500px] overflow-y-auto">
-                            {cartItems.map((item) => (
-                                <MiniCartItem item={item} key={item.id} />
-                            ))}
+                            {cartItems.length > 0 ? (
+                                cartItems.map((item) => <MiniCartItem item={item} key={item.id} />)
+                            ) : (
+                                <img src={images.emptyCart} alt="empty cart" />
+                            )}
                         </div>
 
                         {/* total price */}
@@ -52,7 +55,13 @@ function MiniCart({ children, showCart, onToggleCart }) {
                         </div>
 
                         {/* checkout */}
-                        <Button btnFullWidth btnLarge btnPrimaryGreen to={config.routes.cart}>
+                        <Button
+                            btnFullWidth
+                            btnLarge
+                            btnPrimaryGreen
+                            to={config.routes.cart}
+                            onClick={() => window.scrollTo(0, 0)}
+                        >
                             Checkout
                         </Button>
                     </PopperWrapper>
