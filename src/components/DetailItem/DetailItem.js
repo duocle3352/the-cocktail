@@ -72,7 +72,13 @@ function DetailItem({ item, className }) {
                 </div>
 
                 {/* title */}
-                <h4 className=" mt-3">{strDrink}</h4>
+                <Link
+                    to={`/detail/${idDrink}`}
+                    className="block text-lg font-semibold mt-3"
+                    onClick={() => window.scrollTo(0, 0)}
+                >
+                    {strDrink}
+                </Link>
                 {/* price */}
                 <NumericFormat
                     value={price}
