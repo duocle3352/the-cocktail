@@ -74,7 +74,8 @@ function DetailItem({ item, className }) {
                 {/* title */}
                 <Link
                     to={`/detail/${idDrink}`}
-                    className="block text-lg font-semibold mt-3"
+                    className="block text-3xl font-semibold mt-3 dark:text-white
+                                hover:text-primary-green dark:hover:text-primary-green"
                     onClick={() => window.scrollTo(0, 0)}
                 >
                     {strDrink}
@@ -87,7 +88,9 @@ function DetailItem({ item, className }) {
                     fixedDecimalScale={true}
                     prefix={'$'}
                     renderText={(formattedValue) => (
-                        <h3 className="inline-block font-bold text-underline">{formattedValue}</h3>
+                        <h3 className="inline-block font-bold dark:text-white text-underline">
+                            {formattedValue}
+                        </h3>
                     )}
                 />
                 {/* description */}

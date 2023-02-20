@@ -10,9 +10,9 @@ import { shopYourFavorites } from '~/data';
 const List = ({ data, title }) => {
     return (
         <ul className="list-decimal list-inside">
-            <h4 className="mb-4">{title}</h4>
+            <h4 className="mb-4 dark:text-white">{title}</h4>
             {data.map((key) => (
-                <li key={key[0]} className="text-lg py-1">
+                <li key={key[0]} className="text-lg py-1 dark:text-white">
                     {key[1]}
                 </li>
             ))}

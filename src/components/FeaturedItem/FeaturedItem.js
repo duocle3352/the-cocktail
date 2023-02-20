@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { resetPageItem } from '~/state/features/paginationSlice';
 
-const titleStyle = 'text-white text-2xl font-semibold';
+const titleStyle = 'text-white text-2xl font-semibold dark:text-black';
 
 function FeaturedItem({ to, title, bgColor, bgImg, className }) {
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function FeaturedItem({ to, title, bgColor, bgImg, className }) {
         >
             <span
                 className={`absolute left-0 w-full h-full z-[-1]
-                            bg-center bg-cover bg-no-repeat brightness-50 `}
+                            bg-center bg-cover bg-no-repeat brightness-50`}
                 style={{ backgroundImage: `url(${bgImg})` }}
             />
             <span className={titleStyle}>{title}</span>

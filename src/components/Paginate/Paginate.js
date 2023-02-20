@@ -45,11 +45,12 @@ function Paginate({ items, pageSize }) {
                     onPageChange={handlePageClick}
                     //
                     containerClassName="flex items-center justify-end mt-10"
-                    pageLinkClassName="mx-2 p-2 text-lg hover:text-primary-orange"
-                    activeLinkClassName="text-primary-orange font-bold bg-primary-bg rounded-lg"
-                    previousLinkClassName="p-2"
-                    nextLinkClassName="p-2"
-                    disabledLinkClassName="text-darkLightText cursor-default"
+                    pageLinkClassName="mx-2 p-2 text-lg hover:text-primary-orange dark:text-white dark:hover:text-primary-orange"
+                    activeLinkClassName="text-primary-orange dark:text-primary-orange font-bold bg-primary-bg rounded-lg"
+                    previousLinkClassName="p-2 dark:text-white hover:text-primary-orange dark:hover:text-primary-orange"
+                    nextLinkClassName="p-2 dark:text-white hover:text-primary-orange dark:hover:text-primary-orange"
+                    disabledLinkClassName="text-darkLightText hover:text-darkLightText
+                                            dark:text-darkLightText dark:hover:text-darkLightText cursor-default"
                 />
             ) : (
                 ''

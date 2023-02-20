@@ -70,7 +70,7 @@ function Home() {
                     <img src={images.drawGlass} alt="draw" className="h-[200px] object-contain" />
                     <div
                         className="w-full grid grid-cols-5 gap-x-6 gap-y-8 
-                                bg-primary-bg py-12 px-10 rounded-t-xl"
+                                bg-primary-bg dark:bg-black py-12 px-10 rounded-t-xl"
                     >
                         {newNonAlcoholicItems.length > 0 ? (
                             newNonAlcoholicItems.map((item) => (

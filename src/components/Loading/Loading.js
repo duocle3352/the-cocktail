@@ -5,7 +5,7 @@ function Loading({ className }) {
     return (
         <p
             className={`flex items-center justify-center
-                        font-semibold text-darkLightText ${className}`}
+                        font-semibold text-darkLightText dark:text-white ${className}`}
         >
             <AiOutlineLoading3Quarters className="mr-5 animate-spin" />
             Loading ...

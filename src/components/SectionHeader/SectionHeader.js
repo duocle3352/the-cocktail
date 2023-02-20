@@ -5,11 +5,11 @@ function SectionHeader({ title, subtitle, isShowBtn, link }) {
     return (
         <h2
             className="flex items-center justify-between
-                        font-semibold text-primary-green pb-10"
+                        font-semibold text-primary-green dark:text-primary-orange pb-10"
         >
             <p>
                 <span>{title}</span>
-                <span className="block stroke tracking-wider">{subtitle}</span>
+                <span className="block tracking-wider stroke-orange">{subtitle}</span>
             </p>
             {isShowBtn && (
                 <Button to={link} btnOutline onClick={() => window.scrollTo(0, 0)}>

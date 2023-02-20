@@ -26,7 +26,7 @@ function ShopService({ videoSource, imageSource, title, topDescription, bottomDe
             </video>
 
             <h3
-                className={`font-semibold max-w-max mb-2 bg-transparent text-underline
+                className={`font-semibold max-w-max mb-2 dark:text-primary-orange bg-transparent text-underline
                              group-hover:translate-x-5 ${transitionState} `}
             >
                 {title}

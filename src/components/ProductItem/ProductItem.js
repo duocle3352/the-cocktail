@@ -33,7 +33,8 @@ function ProductItem({ item }) {
             <div className="relative z-0">
                 <button
                     className="group/add absolute top-4 right-4 z-[1] bg-white rounded-lg p-1
-                            border-2 border-solid border-primary-green hover:bg-primary-green"
+                            border-2 border-solid border-primary-green hover:bg-primary-green
+                            dark:bg-black dark:text-white dark:hover:bg-primary-orange "
                     onClick={() => dispatch(addToCart(newItem))}
                 >
                     <BiPlus className="group-hover/add:text-white" size="1rem" />
@@ -54,7 +55,8 @@ function ProductItem({ item }) {
             <div className="pt-2">
                 <Link
                     to={`/detail/${idDrink}`}
-                    className="block text-lg font-semibold hover:text-primary-green"
+                    className="block text-lg font-semibold hover:text-primary-green
+                                dark:text-white dark:hover:text-primary-orange"
                     onClick={() => window.scrollTo(0, 0)}
                 >
                     {strDrink}
@@ -62,7 +64,8 @@ function ProductItem({ item }) {
 
                 <Link
                     to={`/category/${categoryIndex}`}
-                    className="block text-darkLightText text-sm hover:text-primary-green"
+                    className="block text-darkLightText text-sm font-semibold
+                             hover:text-primary-green dark:hover:text-primary-orange"
                     onClick={() => handleCategoryClick()}
                 >
                     {strCategory}
@@ -75,7 +78,7 @@ function ProductItem({ item }) {
                     fixedDecimalScale={true}
                     prefix={'$'}
                     renderText={(formattedValue) => (
-                        <p className="text-xl font-bold">{formattedValue}</p>
+                        <p className="text-xl font-bold dark:text-white">{formattedValue}</p>
                     )}
                 />
             </div>

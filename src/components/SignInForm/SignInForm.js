@@ -32,12 +32,12 @@ function SignInForm({ onShowRegister }) {
     });
 
     return (
-        <div className="flex flex-col items-center justify-center w-[40%] bg-white px-8 ">
+        <div className="flex flex-col items-center justify-center w-[40%] bg-white dark:bg-black px-8 ">
             <FormTitle title="Sign in" />
 
-            <p className="font-medium text-center mt-3">
+            <p className="font-medium text-center mt-3 dark:text-white">
                 Don`t have an account yet?&#160;
-                <button className="text-primary-orange" onClick={onShowRegister}>
+                <button className="text-primary-orange" onClick={() => onShowRegister()}>
                     Sign up here
                 </button>
             </p>
@@ -52,8 +52,10 @@ function SignInForm({ onShowRegister }) {
             </div>
 
             {/* separate */}
-            <div className="flex justify-center w-full mt-3 mb-5 border-b-2 border-solid border-borderColor">
-                <span className="text-xs text-darkLightText bg-white px-3 translate-y-2/4">OR</span>
+            <div className="flex justify-center w-full mt-3 mb-5 border-b-2 border-solid border-borderColor dark:border-darkLightText">
+                <span className="text-xs text-darkLightText bg-white dark:bg-black px-3 translate-y-2/4">
+                    OR
+                </span>
             </div>
 
             {/* form */}

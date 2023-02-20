@@ -22,7 +22,7 @@ function Footer() {
     });
 
     return (
-        <section className="py-20 px-10 bg-primary-green">
+        <section className="py-20 px-10 bg-primary-green dark:bg-dark-bg">
             <div className="grid grid-cols-3">
                 <div>
                     <h5 className={titleStyle}>Proposition 65 Warning</h5>

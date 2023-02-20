@@ -5,6 +5,7 @@ import { HeaderRightToolItem } from '~/components/HeaderRightToolItem';
 import { SignIn } from '~/components/SignIn';
 import { ShoppingCart } from '~/components/ShoppingCart';
 import { Search } from '~/components/Search';
+import { DarkMore } from '~/components/DarkMore';
 import config from '~/config';
 import images from '~/assets/images';
 
@@ -12,7 +13,8 @@ function Header() {
     return (
         <header
             className="flex items-center justify-between w-full h-20
-                        fixed top-0 left-0 z-50 bg-primary-bg"
+                        fixed top-0 left-0 z-50 bg-primary-bg
+                        dark:bg-black"
         >
             {/* nav */}
             <Nav>
@@ -28,6 +30,11 @@ function Header() {
             </Link>
 
             <div className="flex-1 flex items-center justify-end mr-9">
+                {/* dark more*/}
+                <HeaderRightToolItem>
+                    <DarkMore />
+                </HeaderRightToolItem>
+
                 {/* sign*/}
                 <HeaderRightToolItem>
                     <SignIn />

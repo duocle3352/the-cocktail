@@ -91,7 +91,7 @@ function Category() {
                     }}
                     theme={(theme) => ({
                         ...theme,
-                        borderRadius: 12,
+                        borderRadius: 6,
                         cursor: 'pointer',
                         colors: {
                             ...theme.colors,

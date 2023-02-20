@@ -17,12 +17,13 @@ function RightBar() {
     };
 
     const Title = ({ index, category }) => {
-        const active = params.type == index ? 'text-primary-orange' : '';
+        const active = params.type == index ? 'text-primary-orange dark:text-primary-orange' : '';
         return (
             <Link
                 to={`/category/${index}`}
-                className={`flex items-center font-semibold h-[72px] bg-primary-bg
-                            pl-[30px] mb-4 rounded-xl hover:text-primary-orange
+                className={`flex items-center font-semibold h-[72px] bg-primary-bg 
+                            pl-[30px] mb-4 rounded-xl hover:text-primary-orange 
+                            dark:text-white dark:bg-dark-bg dark:hover:text-primary-orange
                             ${active}`}
                 onClick={() => handleClick()}
             >

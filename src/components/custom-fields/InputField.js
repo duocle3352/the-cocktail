@@ -25,9 +25,10 @@ function InputField({ field, form, type = 'text', label = '', placeholder = '', 
                 </label>
             )}
             <input
-                className={`text-base px-2 py-2  border-2 border-borderColor border-solid rounded-xl ${
-                    showError ? 'border-red-400' : ''
-                }`}
+                className={`text-base px-2 py-2 dark:text-white dark:bg-dark-bg border-2
+                        border-borderColor border-solid rounded-xl ${
+                            showError ? 'border-red-400' : ''
+                        }`}
                 // id={name}
                 {...field}
                 type={inputType}
@@ -36,7 +37,8 @@ function InputField({ field, form, type = 'text', label = '', placeholder = '', 
             />
             {type === 'password' && (
                 <button
-                    className="absolute top-[4px] right-[2px] flex items-center text-sm underline hover:text-primary-orange"
+                    className="absolute top-[4px] right-[2px] flex items-center 
+                                text-sm dark:text-white underline hover:text-primary-orange"
                     type="button"
                     onClick={toggleShowPassword}
                 >

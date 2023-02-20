@@ -35,7 +35,7 @@ function App() {
 
     return (
         <Router>
-            <div className="app bg-ap-bg">
+            <div className="app bg-ap-bg dark:bg-black">
                 <Routes>
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;

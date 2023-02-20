@@ -19,15 +19,11 @@ function SignIn() {
 
     const toggleSignIn = useCallback(() => {
         setIsSignIn(!isSignIn);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [isSignIn]);
 
     return (
         <>
-            <button
-                className="text-base font-semibold hover:text-primary"
-                onClick={toggleSignInModal}
-            >
+            <button className="text-base font-semibold dark:text-white" onClick={toggleSignInModal}>
                 Sign in
             </button>
 

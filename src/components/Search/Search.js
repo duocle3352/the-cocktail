@@ -60,7 +60,7 @@ function Search() {
             {isShowSearchModal && (
                 <ModalWrapper>
                     <div
-                        className="relative w-[90%] h-[90%] bg-white p-10 overflow-y-scroll"
+                        className="relative w-[90%] h-[90%] bg-white dark:bg-black p-10 overflow-y-scroll"
                         ref={searchRef}
                     >
                         <CloseBtn
@@ -70,7 +70,7 @@ function Search() {
 
                         {/* input place */}
                         <div
-                            className="group relative inline-flex items-center 
+                            className="group relative inline-flex items-center dark:bg-dark-bg
                                         border-2 border-borderColor rounded-md mb-10
                                         overflow-hidden focus-within:border-primary-green"
                         >
@@ -81,7 +81,7 @@ function Search() {
                             />
                             {/* input */}
                             <input
-                                className="h-11 w-[500px] pr-6"
+                                className="h-11 w-[500px] pr-6 dark:bg-dark-bg dark:text-white"
                                 placeholder="Search"
                                 value={searchValue}
                                 spellCheck={false}

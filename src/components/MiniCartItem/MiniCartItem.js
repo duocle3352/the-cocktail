@@ -7,13 +7,13 @@ import { CloseBtn } from '~/components/CloseBtn';
 import { useDispatch } from 'react-redux';
 import { remove, increase, decrease } from '~/state/features/cartSlice';
 
-const controlStyle = 'text-base font-semibold p-2';
+const controlStyle = 'text-base font-semibold p-2 dark:text-white';
 
 function MiniCartItem({ item }) {
     const { id, name, image, price, amount } = item;
     const dispatch = useDispatch();
     return (
-        <div className="flex relative w-full bg-primary-bg px-6 py-4 my-2 rounded-lg">
+        <div className="flex relative w-full bg-primary-bg dark:bg-black px-6 py-4 my-2 rounded-lg">
             <CloseBtn
                 icon={<AiOutlineClose size="1.2rem" />}
                 onClose={() => dispatch(remove(item))}
@@ -27,7 +27,7 @@ function MiniCartItem({ item }) {
                 {/* name */}
                 <Link
                     to={`detail/${id}`}
-                    className="block text-lg font-semibold mb-2 hover:text-primary-green"
+                    className="block text-lg font-semibold mb-2 hover:text-primary-green dark:text-white"
                 >
                     {name}
                 </Link>
@@ -36,7 +36,7 @@ function MiniCartItem({ item }) {
                     {/* handle count */}
                     <div className="flex items-center justify-around w-[120px] border-2 border-primary-orange rounded-xl">
                         <button
-                            className={`${controlStyle} hover:text-primary-orange ${
+                            className={`${controlStyle} hover:text-primary-orange dark:hover:text-primary-orange ${
                                 amount === 0
                                     ? 'cursor-default text-darkLightText hover:text-darkLightText'
                                     : ''
@@ -49,7 +49,7 @@ function MiniCartItem({ item }) {
                         <span className={controlStyle}>{amount}</span>
 
                         <button
-                            className={`${controlStyle} hover:text-primary-orange`}
+                            className={`${controlStyle} hover:text-primary-orange dark:hover:text-primary-orange`}
                             onClick={() => dispatch(increase(item))}
                         >
                             <AiOutlinePlus />

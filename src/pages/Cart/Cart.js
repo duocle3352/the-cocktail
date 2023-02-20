@@ -5,6 +5,8 @@ import { Button } from '~/components/Button';
 import { clear } from '~/state/features/cartSlice';
 import images from '~/assets/images';
 
+const colTitleStyle = 'text-xl font-semibold dark:text-white';
+
 function Cart() {
     const dispatch = useDispatch();
     const { cartItems, amount, total } = useSelector((state) => state.cart);
@@ -20,10 +22,10 @@ function Cart() {
                     {/* list item */}
                     <ul className="my-10 border-b-2 border-solid border-borderColor">
                         <li className="grid grid-cols-12 gap-5 py-5">
-                            <div className="col-span-5 text-xl font-semibold">Product</div>
-                            <div className="col-span-2 text-xl font-semibold">Price</div>
-                            <div className="col-span-2 text-xl font-semibold">QTY</div>
-                            <div className="col-span-2 text-xl font-semibold">Total</div>
+                            <p className={`col-span-5 ${colTitleStyle}`}>Product</p>
+                            <p className={`col-span-2 ${colTitleStyle}`}>Price</p>
+                            <p className={`col-span-2 ${colTitleStyle}`}>QTY</p>
+                            <p className={`col-span-2 ${colTitleStyle}`}>Total</p>
                         </li>
                         {cartItems.map((item) => (
                             <CartItem key={item.id} item={item} />
@@ -31,10 +33,12 @@ function Cart() {
                     </ul>
                     <div className="flex justify-between">
                         <div>
-                            <h5 className="font-semibold mb-4">Special instructions for seller</h5>
+                            <h5 className="font-semibold mb-4 dark:text-white">
+                                Special instructions for seller
+                            </h5>
                             <textarea
                                 placeholder="Message"
-                                className="h-[150px] w-[500px] p-4 rounded-xl"
+                                className="h-[150px] w-[500px] p-4 rounded-xl dark:bg-dark-bg"
                             />
                         </div>
                         <div className="w-[500px]">
@@ -46,7 +50,9 @@ function Cart() {
                                 prefix={'$'}
                                 renderText={(formattedValue) => (
                                     <div className="flex justify-between mb-5">
-                                        <p className="text-2xl font-bold">SUBTOTAL:</p>
+                                        <p className="text-2xl font-bold dark:text-white">
+                                            SUBTOTAL:
+                                        </p>
                                         <p className="text-primary-orange text-2xl font-bold ">
                                             {formattedValue}
                                         </p>

@@ -44,13 +44,13 @@ function RegisterForm({ onShowSignIn }) {
     });
 
     return (
-        <div className="flex flex-col items-center justify-center w-[80%] bg-white px-8 ">
+        <div className="flex flex-col items-center justify-center w-[80%] bg-white dark:bg-black px-8 ">
             <div className="w-full max-h-full px-7 overflow-y-auto">
                 <FormTitle title="Sign up" />
 
-                <p className="font-medium text-center mt-3">
+                <p className="font-medium text-center mt-3 dark:text-white">
                     You have an account?&#160;
-                    <button className="text-primary-orange" onClick={onShowSignIn}>
+                    <button className="text-primary-orange" onClick={() => onShowSignIn()}>
                         Sign in here
                     </button>
                 </p>
@@ -70,8 +70,8 @@ function RegisterForm({ onShowSignIn }) {
                 </div>
 
                 {/* separate */}
-                <div className="flex justify-center w-full mt-3 mb-5 border-b-2 border-solid border-borderColor">
-                    <span className="text-xs text-darkLightText bg-white px-3 translate-y-2/4">
+                <div className="flex justify-center w-full mt-3 mb-5 border-b-2 border-solid border-borderColor dark:border-darkLightText">
+                    <span className="text-xs text-darkLightText bg-white dark:bg-black px-3 translate-y-2/4">
                         OR
                     </span>
                 </div>
@@ -129,7 +129,9 @@ function RegisterForm({ onShowSignIn }) {
                                 <label className="block mt-2">
                                     <div className="flex">
                                         <Field type="checkbox" name="old" value="yes" />
-                                        <p className="ml-2">Yes, I am 21+ years old.</p>
+                                        <p className="ml-2 dark:text-white">
+                                            Yes, I am 21+ years old.
+                                        </p>
                                     </div>
                                     {errors.old && touched.old && (
                                         <p className="from-error">{errors.old}</p>
@@ -139,7 +141,7 @@ function RegisterForm({ onShowSignIn }) {
                                 <label className="block mt-2">
                                     <div className="flex">
                                         <Field type="checkbox" name="policy" value="yes" />
-                                        <p className="ml-2">
+                                        <p className="ml-2 dark:text-white">
                                             I have read, understood and accepted the{' '}
                                             <Link className="text-primary-orange underline">
                                                 Privacy Policy

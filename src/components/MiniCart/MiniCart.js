@@ -25,7 +25,7 @@ function MiniCart({ children, showCart, onToggleCart }) {
                     <PopperWrapper>
                         <CloseBtn icon={<AiOutlineClose size="1.4rem" />} onClose={onToggleCart} />
 
-                        <h5 className="font-bold pb-1 mb-3 border-b-2 border-borderColor">
+                        <h5 className="font-bold pb-1 mb-3 border-b-2 border-borderColor dark:text-white">
                             {`My Cart (${amount} items):`}
                         </h5>
 
@@ -40,7 +40,7 @@ function MiniCart({ children, showCart, onToggleCart }) {
 
                         {/* total price */}
                         <div className="flex items-center justify-between pt-2 my-5 border-t-2 border-borderColor">
-                            <span className="text-lg font-semibold">SUBTOTAL:</span>
+                            <span className="text-lg font-semibold dark:text-white">SUBTOTAL:</span>
                             <NumericFormat
                                 value={total}
                                 displayType={'text'}

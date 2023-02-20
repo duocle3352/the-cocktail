@@ -52,8 +52,8 @@
 
     /* NAV ITEM */
     .nav {
-        @apply inline-block text-base font-semibold uppercase py-5 mr-6 
-        relative overflow-hidden hover:text-primary-orange;
+        @apply inline-block dark:text-white text-base font-semibold uppercase py-5 mr-6 
+        relative overflow-hidden  hover:text-primary-orange dark:hover:text-primary-orange;
     }
     .nav-after {
         @apply after:content-[''] after:absolute after:bottom-4 after:left-0 after:right-0
@@ -61,12 +61,12 @@
         after:transition-all after:ease-linear after:translate-x-[-150%];
     }
     .nav-active {
-        @apply text-primary-orange after:h-[2px] after:translate-x-0;
+        @apply text-primary-orange dark:text-primary-orange after:h-[2px] after:translate-x-0;
     }
 
     /* right tool */
     .right-tool-style {
-        @apply flex items-center relative bg-white p-3 rounded-xl;
+        @apply flex items-center relative bg-white p-3 rounded-xl dark:bg-dark-bg dark:text-white;
     }
 
     /* btn */
@@ -87,18 +87,19 @@
     } */
 
     .btn-primary-green {
-        @apply text-white bg-primary-green border-primary-green
+        @apply text-white dark:text-black bg-primary-green border-primary-green
             hover:text-primary-green hover:bg-white;
     }
 
     .btn-primary-orange {
-        @apply text-white bg-primary-orange border-primary-orange
+        @apply text-white dark:text-black bg-primary-orange border-primary-orange
             hover:text-primary-orange hover:bg-white;
     }
 
     .btn-outline {
-        @apply text-primary-green border-current
-                hover:border-current hover:bg-primary-bg hover:opacity-80;
+        @apply text-primary-green dark:text-primary-orange border-current
+                hover:bg-primary-bg dark:hover:bg-dark-bg
+                hover:border-current hover:opacity-80;
     }
 
     .btn-small {
@@ -119,7 +120,7 @@
 
     /* form */
     .form-label {
-        @apply font-semibold;
+        @apply font-semibold dark:text-white;
     }
 
     .from-error {
@@ -130,7 +131,7 @@
     .text-underline {
         @apply relative z-10
                 before:absolute before:-bottom-1 before:left-0 before:z-[-1]
-                before:w-full before:h-5 before:bg-[#fadac5];
+                before:w-full before:h-5 before:bg-[#fadac5] dark:before:bg-dark-bg;
     }
 }
 
@@ -138,6 +139,12 @@
     -webkit-text-fill-color: #f6f6f6;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #115e5c;
+}
+
+.stroke-orange {
+    -webkit-text-fill-color: #f6f6f6;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #fd7c22;
 }
 
 .stroke-green {
