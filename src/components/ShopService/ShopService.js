@@ -1,14 +1,22 @@
 import PropTypes from 'prop-types';
+import { useInView } from 'react-intersection-observer';
 
 const drawState = 'absolute top-1/2 right-10 translate-y-[-50%] w-[130px]';
 const transitionState = 'transition-all ease-linear duration-300';
 
 function ShopService({ videoSource, imageSource, title, topDescription, bottomDescription }) {
+    const { ref, inView } = useInView({
+        threshold: 0,
+        triggerOnce: true,
+    });
+
     return (
         <div
+            ref={ref}
             className={`group relative flex justify-center flex-col
                         h-[160px] px-12 bg-primary-bg rounded-xl mx-10
-                        group-hover/services:h-[180px] ${transitionState}`}
+                        group-hover/services:h-[180px] ${transitionState}
+                        ${inView ? 'drop-up' : 'drop-down'}`}
         >
             <img className={`${drawState} z-[1] group-hover:z-0`} src={imageSource} alt="draw" />
 

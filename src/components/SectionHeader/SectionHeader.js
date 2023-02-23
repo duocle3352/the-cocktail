@@ -1,11 +1,19 @@
 import PropTypes from 'prop-types';
+import { useInView } from 'react-intersection-observer';
 import { Button } from '~/components/Button';
 
 function SectionHeader({ title, subtitle, isShowBtn, link }) {
+    const { ref, inView } = useInView({
+        threshold: 0,
+        triggerOnce: true,
+    });
+
     return (
         <h2
-            className="flex items-center justify-between
-                        font-semibold text-primary-green dark:text-primary-orange pb-10"
+            ref={ref}
+            className={`flex items-center justify-between
+                        font-semibold text-primary-green dark:text-primary-orange pb-10
+                        ${inView ? 'drop-up' : 'drop-down'}`}
         >
             <p>
                 <span>{title}</span>

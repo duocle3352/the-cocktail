@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NumericFormat } from 'react-number-format';
 import { BsFillCartPlusFill } from 'react-icons/bs';
+import { useInView } from 'react-intersection-observer';
 
 import useGetCategories from '~/hooks/useGetCategories';
 import { Button } from '~/components/Button';
@@ -10,6 +11,10 @@ import { addToCart } from '~/state/features/cartSlice';
 import { resetPageItem } from '~/state/features/paginationSlice';
 
 function DetailItem({ item, className }) {
+    const { ref, inView } = useInView({
+        threshold: 0,
+        triggerOnce: true,
+    });
     const dispatch = useDispatch();
     const categoriesData = useGetCategories();
     const {
@@ -49,8 +54,9 @@ function DetailItem({ item, className }) {
 
     return (
         <div
+            ref={ref}
             className={`flex items-center justify-around -mx-9 py-12 px-24
-                        ${className}`}
+                        ${className} ${inView ? 'drop-up' : 'drop-down'}`}
         >
             <div className="w-[500px]">
                 <Link

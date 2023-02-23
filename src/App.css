@@ -133,6 +133,15 @@
                 before:absolute before:-bottom-1 before:left-0 before:z-[-1]
                 before:w-full before:h-5 before:bg-[#fadac5] dark:before:bg-dark-bg;
     }
+
+    /* transition */
+    .drop-down {
+        @apply -translate-y-10 opacity-0 transition-all duration-1000;
+    }
+
+    .drop-up {
+        @apply translate-y-0 opacity-100 transition-all duration-1000;
+    }
 }
 
 .stroke {

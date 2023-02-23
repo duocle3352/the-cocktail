@@ -10,28 +10,26 @@ import images from '~/assets/images';
 
 function Slider() {
     return (
-        <div>
-            <Swiper
-                spaceBetween={30}
-                centeredSlides={true}
-                autoplay={{
-                    delay: 4000,
-                    disableOnInteraction: false,
-                }}
-                pagination={{
-                    clickable: true,
-                }}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper w-[90%] rounded-3xl overflow-hidden"
-            >
-                {images.banners.map((banner, index) => (
-                    <SwiperSlide key={index}>
-                        <img src={banner} alt="banner" />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </div>
+        <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+            }}
+            pagination={{
+                clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="w-[90%] h-[80vh] rounded-3xl overflow-hidden"
+        >
+            {images.banners.map((banner, index) => (
+                <SwiperSlide key={index} className="w-full">
+                    <img src={banner} alt="banner" className="w-full h-full object-cover" />
+                </SwiperSlide>
+            ))}
+        </Swiper>
     );
 }
 

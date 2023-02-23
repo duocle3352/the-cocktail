@@ -1,9 +1,9 @@
 import { ShopService } from '~/components/ShopService';
-import { ProductItem } from '~/components/ProductItem';
 import { SectionHeader } from '~/components/SectionHeader';
 import { FeaturedCollections } from '~/components/FeaturedCollections';
 import { SelectedSection } from '~/components/SelectedSection';
-import { Loading } from '~/components/Loading';
+import { SopYourFavorites } from '~/components/SopYourFavorites';
+import { NonAlcoholic } from '~/components/NonAlcoholic';
 import { useGetNonAlcoholic } from '~/hooks';
 import { shopYourFavorites } from '~/data';
 import config from '~/config';
@@ -49,11 +49,7 @@ function Home() {
 
             <section className="section-wrapper">
                 <SectionHeader title="Shop" subtitle="Your Favorites" />
-                <div className="grid grid-cols-5 gap-x-6 gap-y-8">
-                    {shopYourFavorites.map((item) => (
-                        <ProductItem key={item.idDrink} item={item} />
-                    ))}
-                </div>
+                <SopYourFavorites items={shopYourFavorites} />
             </section>
 
             <section className="section-wrapper">
@@ -63,24 +59,7 @@ function Home() {
                     link={config.routes.nonAlcoholic}
                     isShowBtn
                 />
-                <div
-                    className="flex flex-col
-                            bg-light-blue-bg pt-12 px-9 -mx-9"
-                >
-                    <img src={images.drawGlass} alt="draw" className="h-[200px] object-contain" />
-                    <div
-                        className="w-full grid grid-cols-5 gap-x-6 gap-y-8 
-                                bg-primary-bg dark:bg-black py-12 px-10 rounded-t-xl"
-                    >
-                        {newNonAlcoholicItems.length > 0 ? (
-                            newNonAlcoholicItems.map((item) => (
-                                <ProductItem key={item.idDrink} item={item} />
-                            ))
-                        ) : (
-                            <Loading className="text-2xl" />
-                        )}
-                    </div>
-                </div>
+                <NonAlcoholic items={newNonAlcoholicItems} />
             </section>
 
             <section className="section-wrapper">

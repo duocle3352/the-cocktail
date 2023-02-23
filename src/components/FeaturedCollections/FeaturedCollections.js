@@ -1,9 +1,15 @@
+import { useInView } from 'react-intersection-observer';
 import { FeaturedItem } from '../FeaturedItem';
 import images from '~/assets/images';
 
 function FeaturedCollections() {
+    const { ref, inView } = useInView({
+        threshold: 0,
+        triggerOnce: true,
+    });
+
     return (
-        <div className="grid grid-cols-2">
+        <div ref={ref} className={`grid grid-cols-2 ${inView ? 'drop-up' : 'drop-down'}`}>
             <div>
                 <div className="flex">
                     <FeaturedItem
