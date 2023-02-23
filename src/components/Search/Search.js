@@ -8,6 +8,7 @@ import { ModalWrapper } from '~/components/ModalWrapper';
 import { CloseBtn } from '~/components/CloseBtn';
 import { ProductItem } from '~/components/ProductItem';
 import { SectionHeader } from '~/components/SectionHeader';
+import { Logo } from '~/components/Logo';
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
@@ -60,18 +61,23 @@ function Search() {
             {isShowSearchModal && (
                 <ModalWrapper>
                     <div
-                        className="relative w-[90%] h-[90%] bg-white dark:bg-black p-10 overflow-y-scroll"
+                        className="relative w-full h-full bg-white dark:bg-black p-10 overflow-y-scroll"
                         ref={searchRef}
                     >
                         <CloseBtn
-                            icon={<AiOutlineClose size={'1.6rem'} />}
+                            icon={<AiOutlineClose size={'2rem'} />}
                             onClose={toggleShowSearch}
                         />
+
+                        {/* logo */}
+                        <div className="text-center mb-10">
+                            <Logo />
+                        </div>
 
                         {/* input place */}
                         <div
                             className="group relative inline-flex items-center dark:bg-dark-bg
-                                        border-2 border-borderColor rounded-md mb-10
+                                       border-2 border-borderColor rounded-md mb-10
                                         overflow-hidden focus-within:border-primary-green"
                         >
                             {/* search icon */}

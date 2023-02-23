@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Nav } from '~/components/Nav';
 import { NavItem } from '~/components/NavItem';
 import { HeaderRightToolItem } from '~/components/HeaderRightToolItem';
@@ -6,8 +5,8 @@ import { SignIn } from '~/components/SignIn';
 import { ShoppingCart } from '~/components/ShoppingCart';
 import { Search } from '~/components/Search';
 import { DarkMore } from '~/components/DarkMore';
+import { Logo } from '~/components/Logo';
 import config from '~/config';
-import images from '~/assets/images';
 
 function Header() {
     return (
@@ -25,9 +24,7 @@ function Header() {
             </Nav>
 
             {/* logo */}
-            <Link to={config.routes.home} className="no-underline">
-                <img src={images.logo} alt="The Cocktail Logo" />
-            </Link>
+            <Logo />
 
             <div className="flex-1 flex items-center justify-end mr-9">
                 {/* dark more*/}
