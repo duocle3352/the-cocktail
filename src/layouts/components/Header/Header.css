@@ -1,0 +1,13 @@
+@tailwind components;
+
+@layer components {
+    .header-wrapper {
+        @apply flex items-center justify-between w-full h-20
+    fixed top-0 left-0 z-50 bg-primary-bg dark:bg-black;
+    }
+
+    .header-right-tool__box {
+        @apply flex-1 flex items-center justify-end mr-3
+        md:mr-9 lg:mr-9 xl:mr-9;
+    }
+}

@@ -1,0 +1,13 @@
+@tailwind components;
+@layer components {
+    .shopping-cart__price {
+        @apply hidden md:text-xl md:font-semibold md:ml-2
+        lg:text-xl lg:font-semibold lg:ml-2
+        xl:text-xl xl:font-semibold xl:ml-2;
+    }
+
+    .shopping-cart__quantity {
+        @apply absolute -top-1 -right-2 text-white bg-primary-orange 
+        leading-none px-1 py-1 rounded-full;
+    }
+}

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { NumericFormat } from 'react-number-format';
 import { BiCart } from 'react-icons/bi';
 import { MiniCart } from '~/components/MiniCart';
+import './ShoppingCart.css';
 
 function ShoppingCart() {
     const [isShowCart, setIsShowCart] = useState(false);
@@ -22,16 +23,11 @@ function ShoppingCart() {
                     thousandSeparator={true}
                     prefix={'$'}
                     renderText={(formattedValue) => (
-                        <span className="text-xl font-semibold ml-2">{formattedValue}</span>
+                        <span className="shopping-cart__price">{formattedValue}</span>
                     )}
                 />
                 {/* quantity */}
-                <span
-                    className="absolute -top-1 -right-2 text-white bg-primary-orange 
-                            leading-none px-1 py-1 rounded-full"
-                >
-                    {amount}
-                </span>
+                <span className="shopping-cart__quantity">{amount}</span>
             </button>
         </MiniCart>
     );

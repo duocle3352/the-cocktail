@@ -66,7 +66,26 @@
 
     /* right tool */
     .right-tool-style {
-        @apply flex items-center relative bg-white p-3 rounded-xl dark:bg-dark-bg dark:text-white;
+        @apply flex items-center relative bg-white p-2 md:p-3 lg:p-3 xl:p-3 rounded-xl dark:bg-dark-bg dark:text-white;
+    }
+
+    /* sign */
+    .sign-wrapper {
+        @apply flex justify-center items-center flex-col bg-cover bg-login-bg bg-no-repeat overflow-hidden rounded-2xl
+                relative h-full w-full lg:flex-row xl:flex-row 
+                md:w-[90%] md:h-[90%] lg:w-[90%] lg:h-[90%] xl:w-[90%] xl:h-[90%];
+    }
+
+    .sign-subtitle {
+        @apply font-medium text-center mt-3 text-white;
+    }
+
+    .sign-separate-line {
+        @apply flex justify-center w-full mt-3 mb-5 border-b-2 border-solid border-borderColor dark:border-darkLightText;
+    }
+
+    .sign-separate-text {
+        @apply text-xs text-darkLightText bg-white  px-3 translate-y-2/4;
     }
 
     /* btn */
@@ -81,10 +100,6 @@
     .btn-wrapper + .btn-wrapper {
         @apply ml-2;
     }
-
-    /* .btn-rounded {
-        @apply;
-    } */
 
     .btn-primary-green {
         @apply text-white dark:text-black bg-primary-green border-primary-green
@@ -132,6 +147,11 @@
         @apply relative z-10
                 before:absolute before:-bottom-1 before:left-0 before:z-[-1]
                 before:w-full before:h-5 before:bg-[#fadac5] dark:before:bg-dark-bg;
+    }
+
+    /* transition */
+    .absolute-right {
+        @apply absolute top-1 right-1;
     }
 
     /* transition */

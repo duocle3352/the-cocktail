@@ -1,66 +1,45 @@
 import { useCallback, useRef, useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useOutsideCloser } from '~/hooks';
 import { CloseBtn } from '~/components/CloseBtn';
 import { ModalWrapper } from '~/components/ModalWrapper';
 import { RegisterForm } from '~/components/RegisterForm';
 import { SignInForm } from '~/components/SignInForm';
+import { toggleSign } from '~/state/features/signInSlice';
 
 function SignIn() {
-    const [isSignInModal, setIsSignInModal] = useState(false);
-    const [isSignIn, setIsSignIn] = useState(true);
+    const dispatch = useDispatch();
     const modalRef = useRef();
+    const [isSignIn, setIsSignIn] = useState(true);
+    const isSignInModal = useSelector((state) => state.sign);
 
-    const toggleSignInModal = () => {
-        setIsSignInModal(!isSignInModal);
+    const toggleSignModal = () => {
+        dispatch(toggleSign());
     };
-    useOutsideCloser(modalRef, toggleSignInModal);
+    useOutsideCloser(modalRef, toggleSignModal);
 
     const toggleSignIn = useCallback(() => {
         setIsSignIn(!isSignIn);
     }, [isSignIn]);
 
     return (
-        <>
-            <button className="text-base font-semibold dark:text-white" onClick={toggleSignInModal}>
-                Sign in
-            </button>
+        isSignInModal && (
+            <ModalWrapper>
+                {/* modal content */}
+                <div className="sign-wrapper" ref={modalRef}>
+                    {/* close btn */}
+                    <CloseBtn icon={<AiOutlineClose size="2.4rem" />} onClose={toggleSignModal} />
 
-            {/* sign form */}
-            {isSignInModal && (
-                <ModalWrapper>
-                    {/* modal content */}
-                    <div
-                        className="flex justify-end relative h-[80vh] w-[90vw] rounded-2xl
-                        bg-login-bg bg-no-repeat overflow-hidden"
-                        ref={modalRef}
-                    >
-                        {/* close btn */}
-                        <CloseBtn
-                            icon={<AiOutlineClose size="1.8rem" />}
-                            onClose={toggleSignInModal}
-                        />
-
-                        {/* slogan */}
-                        <h3
-                            className={`absolute top-4 left-40 w-[350px] text-white capitalize ${
-                                isSignIn ? '' : 'rotate-90 top-[160px] left-[-60px]'
-                            } transition-transform ease-linear`}
-                        >
-                            <span className="text-primary-orange">premium </span>
-                            spirits shipped right to your door
-                        </h3>
-
-                        {isSignIn ? (
-                            <SignInForm onShowRegister={toggleSignIn} />
-                        ) : (
-                            <RegisterForm onShowSignIn={toggleSignIn} />
-                        )}
-                    </div>
-                </ModalWrapper>
-            )}
-        </>
+                    {isSignIn ? (
+                        <SignInForm onShowRegister={toggleSignIn} />
+                    ) : (
+                        <RegisterForm onShowSignIn={toggleSignIn} />
+                    )}
+                </div>
+            </ModalWrapper>
+        )
     );
 }
 

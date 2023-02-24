@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { FormTitle } from '../FormTitle';
 import { SocialBtn } from '../SocialBtn';
 import { Button } from '../Button';
+import './SignInForm.css';
 
 function SignInForm({ onShowRegister }) {
     const initialValues = {
@@ -32,10 +33,10 @@ function SignInForm({ onShowRegister }) {
     });
 
     return (
-        <div className="flex flex-col items-center justify-center w-[40%] bg-white dark:bg-black px-8 ">
+        <div className="sign-content sign-in__content px-10 ">
             <FormTitle title="Sign in" />
 
-            <p className="font-medium text-center mt-3 dark:text-white">
+            <p className="sign-subtitle">
                 Don`t have an account yet?&#160;
                 <button className="text-primary-orange" onClick={() => onShowRegister()}>
                     Sign up here
@@ -44,18 +45,13 @@ function SignInForm({ onShowRegister }) {
 
             {/* social btn */}
             <div className="w-full mt-3">
-                <SocialBtn icon={<FcGoogle size="1.4rem" />} title="Sign in with Google" />
-                <SocialBtn
-                    icon={<BsFacebook color="#0674e7" size="1.4rem" />}
-                    title="Sign in with Facebook"
-                />
+                <SocialBtn icon={<FcGoogle size="1.4rem" />} title="Sign in" />
+                <SocialBtn icon={<BsFacebook color="#0674e7" size="1.4rem" />} title="Sign in" />
             </div>
 
             {/* separate */}
-            <div className="flex justify-center w-full mt-3 mb-5 border-b-2 border-solid border-borderColor dark:border-darkLightText">
-                <span className="text-xs text-darkLightText bg-white dark:bg-black px-3 translate-y-2/4">
-                    OR
-                </span>
+            <div className="sign-separate-line">
+                <span className="sign-separate-text">OR</span>
             </div>
 
             {/* form */}

@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types';
+import './SocialBtn.css';
 
 function SocialBtn({ icon, title, className }) {
     return (
-        <button
-            className={`flex items-center justify-center w-full dark:bg-dark-bg
-                        border-2 border-solid border-borderColor rounded-xl
-                        py-2 mt-2 ${className}`}
-        >
+        <button className={`social-btn ${className}`}>
             {icon}
-            <span className="ml-2 text-darkLightText dark:text-white">{title}</span>
+            <span className="ml-2 text-white">{title}</span>
         </button>
     );
 }

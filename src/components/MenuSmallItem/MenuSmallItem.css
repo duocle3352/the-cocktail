@@ -1,0 +1,7 @@
+@tailwind components;
+
+@layer {
+    .menu-small-item__box {
+        @apply relative flex-1 py-6 px-5 rounded-lg bg-cover bg-no-repeat bg-center;
+    }
+}

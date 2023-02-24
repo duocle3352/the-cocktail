@@ -1,0 +1,16 @@
+@tailwind components;
+
+@layer components {
+    .menu {
+        @apply flex-1 ml-3 md:ml-9 lg:hidden xl:hidden;
+    }
+
+    .menu-content {
+        @apply fixed top-0 bottom-0 left-0 right-0 bg-primary-bg dark:bg-black p-10
+        transition-transform duration-500 z-50 overflow-y-auto;
+    }
+
+    .menu-small-item__wrapper {
+        @apply w-full md:w-[400px] flex justify-between gap-4;
+    }
+}

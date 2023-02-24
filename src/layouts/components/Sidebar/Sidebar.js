@@ -29,7 +29,10 @@ function Sidebar() {
     };
 
     return (
-        <ul className="flex items-center justify-between h-16 bg-ap-bg dark:bg-black px-20">
+        <ul
+            className="hidden items-center justify-between h-16 bg-ap-bg dark:bg-black px-20
+                        lg:flex xl:flex"
+        >
             {categories.map((category, index) => (
                 <li key={index}>
                     <Link

@@ -20,7 +20,7 @@ function InputField({ field, form, type = 'text', label = '', placeholder = '', 
     return (
         <div className="flex flex-col relative mt-1">
             {label && (
-                <label className="form-label" htmlFor={name}>
+                <label className="form-label text-white" htmlFor={name}>
                     {label}
                 </label>
             )}
@@ -38,7 +38,7 @@ function InputField({ field, form, type = 'text', label = '', placeholder = '', 
             {type === 'password' && (
                 <button
                     className="absolute top-[4px] right-[2px] flex items-center 
-                                text-sm dark:text-white underline hover:text-primary-orange"
+                                text-sm text-white underline hover:text-primary-orange"
                     type="button"
                     onClick={toggleShowPassword}
                 >

@@ -6,15 +6,17 @@ import { ShoppingCart } from '~/components/ShoppingCart';
 import { Search } from '~/components/Search';
 import { DarkMore } from '~/components/DarkMore';
 import { Logo } from '~/components/Logo';
+import { Menu } from '~/components/Menu';
+import { SignBtn } from '~/components/SignBtn';
 import config from '~/config';
+import './Header.css';
 
 function Header() {
     return (
-        <header
-            className="flex items-center justify-between w-full h-20
-                        fixed top-0 left-0 z-50 bg-primary-bg
-                        dark:bg-black"
-        >
+        <header className="header-wrapper">
+            {/* mobile and tablet menu */}
+            <Menu />
+
             {/* nav */}
             <Nav>
                 <NavItem link={config.routes.home} title="home" />
@@ -26,16 +28,19 @@ function Header() {
             {/* logo */}
             <Logo />
 
-            <div className="flex-1 flex items-center justify-end mr-9">
+            <div className="header-right-tool__box">
                 {/* dark more*/}
-                <HeaderRightToolItem>
+                <HeaderRightToolItem className="hidden lg:block xl:block">
                     <DarkMore />
                 </HeaderRightToolItem>
 
                 {/* sign*/}
-                <HeaderRightToolItem>
-                    <SignIn />
+                <HeaderRightToolItem className="hidden lg:block xl:block">
+                    <SignBtn />
                 </HeaderRightToolItem>
+
+                {/* sign modal */}
+                <SignIn />
 
                 {/* search btn*/}
                 <HeaderRightToolItem>

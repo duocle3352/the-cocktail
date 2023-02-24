@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-function HeaderRightToolItem({ children }) {
-    return <div className="ml-6 py-1">{children}</div>;
+function HeaderRightToolItem({ children, className }) {
+    return <div className={`ml-3 md:ml-6 lg:ml-6 xl:ml-6 py-1 ${className}`}>{children}</div>;
 }
 
 HeaderRightToolItem.propTypes = {

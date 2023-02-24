@@ -28,6 +28,11 @@ const images = {
     collectionOther: require('~/assets/images/collection-other.jpg'),
     collectionParty: require('~/assets/images/collection-party.jpg'),
     collectionSoft: require('~/assets/images/collection-soft.jpg'),
+    //
+    squadMenu1: require('~/assets/images/squad_menu-1.svg').default,
+    squadMenu2: require('~/assets/images/squad_menu-2.svg').default,
+    squadMenu3: require('~/assets/images/squad_menu-3.svg').default,
+    squadMenu4: require('~/assets/images/squad_menu-4.svg').default,
 };
 
 export default images;
