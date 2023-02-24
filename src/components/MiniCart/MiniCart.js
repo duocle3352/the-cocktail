@@ -10,6 +10,7 @@ import { CloseBtn } from '~/components/CloseBtn';
 import { Button } from '~/components/Button';
 import config from '~/config';
 import images from '~/assets/images';
+import './MiniCart.css';
 
 function MiniCart({ children, showCart, onToggleCart }) {
     const { total, cartItems, amount } = useSelector((state) => state.cart);
@@ -25,12 +26,10 @@ function MiniCart({ children, showCart, onToggleCart }) {
                     <PopperWrapper>
                         <CloseBtn icon={<AiOutlineClose size="1.4rem" />} onClose={onToggleCart} />
 
-                        <h5 className="font-bold pb-1 mb-3 border-b-2 border-borderColor dark:text-white">
-                            {`My Cart (${amount} items):`}
-                        </h5>
+                        <h5 className="mini-cart-title">{`My Cart (${amount} items):`}</h5>
 
                         {/* cart item */}
-                        <div className="max-h-[400px] w-[500px] overflow-y-auto">
+                        <div className="mini-cart-list-item">
                             {cartItems.length > 0 ? (
                                 cartItems.map((item) => <MiniCartItem item={item} key={item.id} />)
                             ) : (
@@ -39,7 +38,7 @@ function MiniCart({ children, showCart, onToggleCart }) {
                         </div>
 
                         {/* total price */}
-                        <div className="flex items-center justify-between pt-2 my-5 border-t-2 border-borderColor">
+                        <div className="mini-cart-price__box">
                             <span className="text-lg font-semibold dark:text-white">SUBTOTAL:</span>
                             <NumericFormat
                                 value={total}

@@ -1,0 +1,20 @@
+@tailwind components;
+@layer components {
+    .search-wrapper {
+        @apply relative w-full h-full bg-white dark:bg-black p-5 md:p-10 overflow-y-scroll;
+    }
+
+    .search-input__box {
+        @apply relative inline-flex items-center dark:bg-dark-bg w-full md:w-fit 
+        border-2 border-borderColor rounded-md mb-10
+        overflow-hidden focus-within:border-primary-green;
+    }
+
+    .search-input {
+        @apply h-11 w-full md:w-[500px] pr-6 dark:bg-dark-bg dark:text-white;
+    }
+
+    .search-result {
+        @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5;
+    }
+}

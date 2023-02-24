@@ -9,6 +9,7 @@ import { CloseBtn } from '~/components/CloseBtn';
 import { ProductItem } from '~/components/ProductItem';
 import { SectionHeader } from '~/components/SectionHeader';
 import { Logo } from '~/components/Logo';
+import './Search.css';
 
 function Search() {
     const [searchValue, setSearchValue] = useState('');
@@ -60,10 +61,7 @@ function Search() {
 
             {isShowSearchModal && (
                 <ModalWrapper>
-                    <div
-                        className="relative w-full h-full bg-white dark:bg-black p-10 overflow-y-scroll"
-                        ref={searchRef}
-                    >
+                    <div className="search-wrapper" ref={searchRef}>
                         <CloseBtn
                             icon={<AiOutlineClose size={'2rem'} />}
                             onClose={toggleShowSearch}
@@ -75,11 +73,7 @@ function Search() {
                         </div>
 
                         {/* input place */}
-                        <div
-                            className="group relative inline-flex items-center dark:bg-dark-bg
-                                       border-2 border-borderColor rounded-md mb-10
-                                        overflow-hidden focus-within:border-primary-green"
-                        >
+                        <div className="group search-input__box">
                             {/* search icon */}
                             <BiSearch
                                 size={'1.4em'}
@@ -87,7 +81,7 @@ function Search() {
                             />
                             {/* input */}
                             <input
-                                className="h-11 w-[500px] pr-6 dark:bg-dark-bg dark:text-white"
+                                className="search-input"
                                 placeholder="Search"
                                 value={searchValue}
                                 spellCheck={false}
@@ -118,7 +112,7 @@ function Search() {
 
                         {/* search result place */}
                         {results && results.length > 0 ? (
-                            <div className="grid grid-cols-5 gap-5">
+                            <div className="search-result">
                                 {results.map((result) => (
                                     <ProductItem key={result.idDrink} item={result} />
                                 ))}

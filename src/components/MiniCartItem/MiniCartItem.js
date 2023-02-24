@@ -1,19 +1,17 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { NumericFormat } from 'react-number-format';
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 import { CloseBtn } from '~/components/CloseBtn';
-
-import { useDispatch } from 'react-redux';
 import { remove, increase, decrease } from '~/state/features/cartSlice';
-
-const controlStyle = 'text-base font-semibold p-2 dark:text-white';
+import './MiniCartItem.css';
 
 function MiniCartItem({ item }) {
     const { id, name, image, price, amount } = item;
     const dispatch = useDispatch();
     return (
-        <div className="flex relative w-full bg-primary-bg dark:bg-black px-6 py-4 my-2 rounded-lg">
+        <div className="mini-cart-item__wrapper">
             <CloseBtn
                 icon={<AiOutlineClose size="1.2rem" />}
                 onClose={() => dispatch(remove(item))}
@@ -25,31 +23,26 @@ function MiniCartItem({ item }) {
             </div>
             <div className="flex-1 ml-6">
                 {/* name */}
-                <Link
-                    to={`detail/${id}`}
-                    className="block text-lg font-semibold mb-2 hover:text-primary-green dark:text-white"
-                >
+                <Link to={`detail/${id}`} className="mini-cart-item__name">
                     {name}
                 </Link>
 
                 <div className="flex items-center justify-between">
                     {/* handle count */}
-                    <div className="flex items-center justify-around w-[120px] border-2 border-primary-orange rounded-xl">
+                    <div className="mini-cart-item__control-box">
                         <button
-                            className={`${controlStyle} hover:text-primary-orange dark:hover:text-primary-orange ${
-                                amount === 0
-                                    ? 'cursor-default text-darkLightText hover:text-darkLightText'
-                                    : ''
+                            className={`mini-cart-item__control-style mini-cart-item__control-btn ${
+                                amount === 0 ? 'mini-cart-item__control-disabled' : ''
                             }`}
                             onClick={() => dispatch(decrease(item))}
                         >
                             <AiOutlineMinus />
                         </button>
 
-                        <span className={controlStyle}>{amount}</span>
+                        <span className="mini-cart-item__control-style">{amount}</span>
 
                         <button
-                            className={`${controlStyle} hover:text-primary-orange dark:hover:text-primary-orange`}
+                            className={`mini-cart-item__control-style mini-cart-item__control-btn`}
                             onClick={() => dispatch(increase(item))}
                         >
                             <AiOutlinePlus />
@@ -57,7 +50,7 @@ function MiniCartItem({ item }) {
                     </div>
 
                     {/* price */}
-                    <div className="flex flex-col items-end">
+                    <div className="flex flex-col items-end w-[115px]">
                         <NumericFormat
                             value={price}
                             displayType={'text'}
