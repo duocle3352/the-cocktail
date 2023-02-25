@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import images from '~/assets/images';
+import './Slider.css';
 
 function Slider() {
     return (
@@ -22,7 +23,7 @@ function Slider() {
             }}
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
-            className="w-[90%] h-[80vh] rounded-3xl overflow-hidden"
+            className="slider-wrapper"
         >
             {images.banners.map((banner, index) => (
                 <SwiperSlide key={index} className="w-full">

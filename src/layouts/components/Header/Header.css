@@ -8,6 +8,6 @@
 
     .header-right-tool__box {
         @apply flex-1 flex items-center justify-end mr-3
-        md:mr-9 lg:mr-9 xl:mr-9;
+        md:mr-5  xl:mr-9;
     }
 }

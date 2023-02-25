@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { resetPageItem } from '~/state/features/paginationSlice';
 import useGetCategories from '~/hooks/useGetCategories';
+import './Sidebar.css';
 
 function Sidebar() {
     const dispatch = useDispatch();
@@ -29,16 +30,12 @@ function Sidebar() {
     };
 
     return (
-        <ul
-            className="hidden items-center justify-between h-16 bg-ap-bg dark:bg-black px-20
-                        lg:flex xl:flex"
-        >
+        <ul className="sidebar-wrapper">
             {categories.map((category, index) => (
-                <li key={index}>
+                <li key={index} className="">
                     <Link
                         to={`/category/${index}`}
-                        className={`text-base font-semibold py-2 hover:text-primary-green hover:underline
-                        dark:text-white dark:hover:text-primary-orange`}
+                        className="sidebar-item"
                         onClick={() => handleClick()}
                     >
                         {category.strCategory}

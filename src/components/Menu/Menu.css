@@ -2,7 +2,7 @@
 
 @layer components {
     .menu {
-        @apply flex-1 ml-3 md:ml-9 lg:hidden xl:hidden;
+        @apply flex-1 ml-3 md:ml-5 lg:hidden xl:hidden;
     }
 
     .menu-content {

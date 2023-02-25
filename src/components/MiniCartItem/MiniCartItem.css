@@ -1,7 +1,7 @@
 @tailwind components;
 @layer components {
     .mini-cart-item__wrapper {
-        @apply flex relative w-full bg-primary-bg dark:bg-black px-6 py-4 my-2 rounded-lg;
+        @apply flex relative w-full bg-primary-bg dark:bg-black px-2 md:px-6 py-4 my-2 rounded-lg;
     }
 
     .mini-cart-item__name {

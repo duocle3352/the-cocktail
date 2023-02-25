@@ -21,7 +21,7 @@ function Home() {
     return (
         <>
             {/* shop services */}
-            <section className="section-wrapper grid grid-cols-3 group/services">
+            <section className="section-wrapper grid grid-cols-3 gap-5 xl:gap-10 group/services">
                 <ShopService
                     videoSource={videos.draw1}
                     imageSource={images.draws1}

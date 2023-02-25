@@ -1,0 +1,30 @@
+@tailwind components;
+@layer components {
+    .shop-service-wrapper {
+        @apply relative flex justify-center items-center flex-col bg-primary-bg 
+        rounded-xl px-2 pb-3 group-hover/services:pt-6
+        lg:px-5 lg:h-[160px] lg:group-hover/services:h-[180px] lg:pb-3 lg:items-baseline
+        xl:px-12;
+    }
+
+    .shop-service-transition {
+        @apply transition-all ease-linear duration-300;
+    }
+
+    .shop-service-draw {
+        @apply w-[100px] absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 rounded-full
+        lg:top-1 lg:right-5 lg:translate-x-0 lg:translate-y-0
+        xl:w-[130px] xl:top-1/2 xl:right-10 xl:-translate-y-1/2;
+    }
+
+    .shop-service-title {
+        @apply text-xl font-semibold max-w-max 
+        dark:text-primary-orange bg-transparent pt-14 mb-2
+        lg:group-hover/draw:translate-x-5 lg:text-3xl;
+    }
+
+    .shop-service-description {
+        @apply font-zilla-slab text-base md:text-lg leading-6 max-w-max text-center
+        lg:group-hover/draw:translate-x-5 lg:text-start;
+    }
+}

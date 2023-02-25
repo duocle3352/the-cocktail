@@ -5,7 +5,7 @@
     }
 
     .mini-cart-list-item {
-        @apply max-h-[400px] w-full lg:w-[500px] px-4 overflow-y-auto;
+        @apply max-h-[400px] w-full lg:w-[500px] md:px-4 overflow-y-auto;
     }
 
     .mini-cart-price__box {

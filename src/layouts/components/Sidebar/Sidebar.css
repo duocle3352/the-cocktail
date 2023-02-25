@@ -1,0 +1,13 @@
+@tailwind components;
+@layer components {
+    .sidebar-wrapper {
+        @apply hidden items-center justify-between bg-ap-bg dark:bg-black 
+        lg:px-5 lg:flex xl:px-9;
+    }
+
+    .sidebar-item {
+        @apply block xl:text-base font-semibold py-4 hover:text-primary-green hover:underline
+        dark:text-white dark:hover:text-primary-orange
+        lg:text-sm lg:font-medium;
+    }
+}

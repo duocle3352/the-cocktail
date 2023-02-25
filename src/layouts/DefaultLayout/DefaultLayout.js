@@ -8,7 +8,7 @@ function DefaultLayout({ children }) {
             <div className="mt-20">
                 <Sidebar />
                 <Slider />
-                <div className="py-10">{children}</div>
+                <div className="py-10 w-full overflow-hidden">{children}</div>
             </div>
             <Footer />
         </>

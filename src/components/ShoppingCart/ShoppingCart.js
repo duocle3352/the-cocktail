@@ -16,7 +16,7 @@ function ShoppingCart() {
     return (
         <MiniCart showCart={isShowCart} onToggleCart={toggleCart}>
             <button className={`right-tool-style`} onClick={toggleCart}>
-                <BiCart size="1.5rem" />
+                <BiCart />
                 <NumericFormat
                     value={total}
                     displayType={'text'}

@@ -56,7 +56,7 @@ function Search() {
     return (
         <>
             <button className={`right-tool-style`} onClick={toggleShowSearch}>
-                <BiSearch size="1.5rem" />
+                <BiSearch />
             </button>
 
             {isShowSearchModal && (

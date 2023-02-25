@@ -8,6 +8,6 @@
 
     .shopping-cart__quantity {
         @apply absolute -top-1 -right-2 text-white bg-primary-orange 
-        leading-none px-1 py-1 rounded-full;
+        leading-none px-1 py-1 rounded-full text-xs md:text-sm;
     }
 }
