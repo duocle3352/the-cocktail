@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AiOutlineClose, AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { BiSearch } from 'react-icons/bi';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { searchService } from '~/services';
 import { useDebounce, useOutsideCloser } from '~/hooks';
@@ -9,19 +10,22 @@ import { CloseBtn } from '~/components/CloseBtn';
 import { ProductItem } from '~/components/ProductItem';
 import { SectionHeader } from '~/components/SectionHeader';
 import { Logo } from '~/components/Logo';
+import { toggleSearch } from '~/state/features/searchSlice';
 import './Search.css';
 
 function Search() {
+    const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState('');
     const [results, setResults] = useState([]);
-    const [isShowSearchModal, setShowSearchModal] = useState(false);
+    // const [isShowSearchModal, setShowSearchModal] = useState(false);
+    const isShowSearchModal = useSelector((state) => state.search);
     const [isShowLoading, setIsShowLoading] = useState(false);
     const searchRef = useRef();
     const inputRef = useRef();
     const debounceValue = useDebounce(searchValue, 800);
 
     const toggleShowSearch = () => {
-        setShowSearchModal(!isShowSearchModal);
+        dispatch(toggleSearch());
     };
     useOutsideCloser(searchRef, toggleShowSearch);
 
@@ -54,76 +58,64 @@ function Search() {
     };
 
     return (
-        <>
-            <button className={`right-tool-style`} onClick={toggleShowSearch}>
-                <BiSearch />
-            </button>
+        isShowSearchModal && (
+            <ModalWrapper>
+                <div className="search-wrapper" ref={searchRef}>
+                    <CloseBtn icon={<AiOutlineClose size={'2rem'} />} onClose={toggleShowSearch} />
 
-            {isShowSearchModal && (
-                <ModalWrapper>
-                    <div className="search-wrapper" ref={searchRef}>
-                        <CloseBtn
-                            icon={<AiOutlineClose size={'2rem'} />}
-                            onClose={toggleShowSearch}
-                        />
-
-                        {/* logo */}
-                        <div className="text-center mb-10">
-                            <Logo />
-                        </div>
-
-                        {/* input place */}
-                        <div className="group search-input__box">
-                            {/* search icon */}
-                            <BiSearch
-                                size={'1.4em'}
-                                className="w-11 text-darkLightText group-focus-within:text-primary-green"
-                            />
-                            {/* input */}
-                            <input
-                                className="search-input"
-                                placeholder="Search"
-                                value={searchValue}
-                                spellCheck={false}
-                                ref={inputRef}
-                                onChange={handleChangeValue}
-                            />
-                            {/* loading */}
-                            {isShowLoading && (
-                                <span className="absolute right-11 top-1/2 -translate-y-1/2">
-                                    <AiOutlineLoading3Quarters className="text-darkLightText animate-spin" />
-                                </span>
-                            )}
-                            {/* clear btn */}
-                            <button
-                                className="mr-2 p-2 text-darkLightText"
-                                onClick={handleClearValue}
-                            >
-                                <AiOutlineClose />
-                            </button>
-                        </div>
-
-                        {/* title */}
-                        {searchValue === '' ? (
-                            <SectionHeader title="Popular products" />
-                        ) : (
-                            <SectionHeader title={searchValue} />
-                        )}
-
-                        {/* search result place */}
-                        {results && results.length > 0 ? (
-                            <div className="search-result">
-                                {results.map((result) => (
-                                    <ProductItem key={result.idDrink} item={result} />
-                                ))}
-                            </div>
-                        ) : (
-                            <h5>{`The search "${searchValue}" matches 0 products.`}</h5>
-                        )}
+                    {/* logo */}
+                    <div className="text-center mb-10">
+                        <Logo />
                     </div>
-                </ModalWrapper>
-            )}
-        </>
+
+                    {/* input place */}
+                    <div className="group search-input__box">
+                        {/* search icon */}
+                        <BiSearch
+                            size={'1.4em'}
+                            className="w-11 text-darkLightText group-focus-within:text-primary-green"
+                        />
+                        {/* input */}
+                        <input
+                            className="search-input"
+                            placeholder="Search"
+                            value={searchValue}
+                            spellCheck={false}
+                            ref={inputRef}
+                            onChange={handleChangeValue}
+                        />
+                        {/* loading */}
+                        {isShowLoading && (
+                            <span className="absolute right-11 top-1/2 -translate-y-1/2">
+                                <AiOutlineLoading3Quarters className="text-darkLightText animate-spin" />
+                            </span>
+                        )}
+                        {/* clear btn */}
+                        <button className="mr-2 p-2 text-darkLightText" onClick={handleClearValue}>
+                            <AiOutlineClose />
+                        </button>
+                    </div>
+
+                    {/* title */}
+                    {searchValue === '' ? (
+                        <SectionHeader title="Popular products" />
+                    ) : (
+                        <SectionHeader title={searchValue} />
+                    )}
+
+                    {/* search result place */}
+                    {results && results.length > 0 ? (
+                        <div className="search-result">
+                            {results.map((result) => (
+                                <ProductItem key={result.idDrink} item={result} />
+                            ))}
+                        </div>
+                    ) : (
+                        <h5>{`The search "${searchValue}" matches 0 products.`}</h5>
+                    )}
+                </div>
+            </ModalWrapper>
+        )
     );
 }
 

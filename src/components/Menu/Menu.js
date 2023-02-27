@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { BiChevronLeft, BiGift, BiMenu, BiUser, BiChevronDown } from 'react-icons/bi';
+import { BiChevronLeft, BiGift, BiMenu, BiUser, BiChevronDown, BiSearch } from 'react-icons/bi';
 import { BsMoonStarsFill, BsSunFill } from 'react-icons/bs';
-import { FiUsers } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
 
 import { MenuItem } from '~/components/MenuItem';
 import { MenuSmallItem } from '~/components/MenuSmallItem';
 import { MenuChildren } from '~/components/MenuChildren';
 import { useDarkMore } from '~/hooks';
+import { toggleSign } from '~/state/features/signInSlice';
+import { toggleSearch } from '~/state/features/searchSlice';
 import images from '~/assets/images';
 import config from '~/config';
-import { useDispatch } from 'react-redux';
-import { toggleSign } from '~/state/features/signInSlice';
 import './Menu.css';
 
 function Menu() {
@@ -31,9 +31,13 @@ function Menu() {
         dispatch(toggleSign());
     };
 
+    const showSearch = () => {
+        dispatch(toggleSearch());
+    };
+
     return (
         <div className="menu">
-            <BiMenu size="2.6rem" className="dark:text-white" onClick={toggleShowMenu} />
+            <BiMenu size="1.8rem" className="dark:text-white" onClick={toggleShowMenu} />
 
             <div className={`menu-content ${isShowMenu ? 'translate-x-0' : '-translate-x-full'}`}>
                 <BiChevronLeft
@@ -69,33 +73,28 @@ function Menu() {
                     <div className="menu-small-item__wrapper">
                         <MenuSmallItem
                             title="Log In"
-                            icon={<BiUser size="2rem" />}
+                            icon={<BiUser />}
                             image={images.squadMenu1}
                             onClick={showSign}
                         />
                         <MenuSmallItem
                             title={isDarkMore ? 'Light more' : 'Dark more'}
-                            icon={
-                                isDarkMore ? (
-                                    <BsSunFill size="2rem" />
-                                ) : (
-                                    <BsMoonStarsFill size="2rem" />
-                                )
-                            }
+                            icon={isDarkMore ? <BsSunFill /> : <BsMoonStarsFill />}
                             image={images.squadMenu2}
                             onClick={toggleDarkMore}
                         />
                     </div>
                     <div className="menu-small-item__wrapper">
                         <MenuSmallItem
-                            title="Gift"
-                            icon={<BiGift size="2rem" />}
-                            // image={images.squadMenu3}
-                            disabled
+                            title="Search"
+                            icon={<BiSearch />}
+                            image={images.squadMenu3}
+                            onClick={showSearch}
                         />
+
                         <MenuSmallItem
-                            title="Contact Us"
-                            icon={<FiUsers size="2rem" />}
+                            title="Gift"
+                            icon={<BiGift />}
                             // image={images.squadMenu4}
                             disabled
                         />

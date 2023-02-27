@@ -10,6 +10,7 @@ import { Menu } from '~/components/Menu';
 import { SignBtn } from '~/components/SignBtn';
 import config from '~/config';
 import './Header.css';
+import { SearchBtn } from '~/components/SearchBtn';
 
 function Header() {
     return (
@@ -43,9 +44,12 @@ function Header() {
                 <SignIn />
 
                 {/* search btn*/}
-                <HeaderRightToolItem>
-                    <Search />
+                <HeaderRightToolItem className="hidden lg:block xl:block">
+                    <SearchBtn />
                 </HeaderRightToolItem>
+
+                {/* search modal */}
+                <Search />
 
                 {/* shopping cart */}
                 <HeaderRightToolItem>
