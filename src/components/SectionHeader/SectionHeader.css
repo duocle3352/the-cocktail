@@ -1,0 +1,7 @@
+@tailwind components;
+@layer components {
+    .section-header {
+        @apply flex items-center justify-between
+        text-3xl lg:text-4xl font-semibold text-primary-green dark:text-primary-orange pb-10;
+    }
+}

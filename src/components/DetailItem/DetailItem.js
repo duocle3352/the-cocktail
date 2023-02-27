@@ -9,8 +9,9 @@ import useGetCategories from '~/hooks/useGetCategories';
 import { Button } from '~/components/Button';
 import { addToCart } from '~/state/features/cartSlice';
 import { resetPageItem } from '~/state/features/paginationSlice';
+import './DetailItem.css';
 
-function DetailItem({ item, className }) {
+function DetailItem({ item }) {
     const { ref, inView } = useInView({
         threshold: 0,
         triggerOnce: true,
@@ -53,35 +54,25 @@ function DetailItem({ item, className }) {
     };
 
     return (
-        <div
-            ref={ref}
-            className={`flex items-center justify-around -mx-9 py-12 px-24
-                        ${className} ${inView ? 'drop-up' : 'drop-down'}`}
-        >
-            <div className="w-[500px]">
+        <div ref={ref} className={`detail-item__wrapper  ${inView ? 'drop-up' : 'drop-down'}`}>
+            <div className="w-full md:w-[400px] mt-5 px-5">
                 <Link
                     to={`category/${categoryIndex}`}
-                    className="text-base text-primary-orange font-semibold hover:text-primary-orange
-                                px-2 -ml-2 border-2 border-primary-orange rounded-full"
+                    className="detail-item-category"
                     onClick={() => handleConnectClick()}
                 >
                     {strCategory}
                 </Link>
 
                 <div className="flex">
-                    <p className="text-base text-darkLightText font-semibold mt-2">
-                        {strAlcoholic}
-                    </p>
-                    <p className="text-base text-darkLightText font-semibold mt-2 ml-5">
-                        {strGlass}
-                    </p>
+                    <p className="detail-item-tag">{strAlcoholic}</p>
+                    <p className="detail-item-tag ml-5">{strGlass}</p>
                 </div>
 
                 {/* title */}
                 <Link
                     to={`/detail/${idDrink}`}
-                    className="block text-3xl font-semibold mt-3 dark:text-white
-                                hover:text-primary-green dark:hover:text-primary-green"
+                    className="detail-item-title"
                     onClick={() => window.scrollTo(0, 0)}
                 >
                     {strDrink}
@@ -100,7 +91,7 @@ function DetailItem({ item, className }) {
                     )}
                 />
                 {/* description */}
-                <p className="w-[400px] text-sm text-darkLightText my-10">{strInstructions}</p>
+                <p className="text-sm text-darkLightText my-10">{strInstructions}</p>
                 {/* btn add */}
                 <Button
                     leftIcon={<BsFillCartPlusFill />}
@@ -111,16 +102,17 @@ function DetailItem({ item, className }) {
                 </Button>
             </div>
             {/* image */}
-            <div className="w-[500px]">
-                <img className="w-full" src={strDrinkThumb} alt={strDrink} />
-            </div>
+            <img
+                className="md:w-[250px] lg:w-[400px] rounded-xl"
+                src={strDrinkThumb}
+                alt={strDrink}
+            />
         </div>
     );
 }
 
 DetailItem.propTypes = {
     item: PropTypes.object.isRequired,
-    className: PropTypes.string,
 };
 
 export default DetailItem;

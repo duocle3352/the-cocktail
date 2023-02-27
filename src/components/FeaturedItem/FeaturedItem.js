@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { resetPageItem } from '~/state/features/paginationSlice';
-
-const titleStyle = 'text-white text-2xl font-semibold dark:text-black';
+import './FeaturedItem.css';
 
 function FeaturedItem({ to, title, bgColor, bgImg, className }) {
     const dispatch = useDispatch();
@@ -16,25 +15,12 @@ function FeaturedItem({ to, title, bgColor, bgImg, className }) {
     return (
         <Link
             to={to}
-            className={`group flex items-center justify-center
-                        relative z-0 m-4 rounded-xl overflow-hidden
-                        ${className}`}
+            className={`group/featured featured-item__wrapper ${className}`}
             onClick={() => handleClick()}
         >
-            <span
-                className={`absolute left-0 w-full h-full z-[-1]
-                            bg-center bg-cover bg-no-repeat brightness-50`}
-                style={{ backgroundImage: `url(${bgImg})` }}
-            />
-            <span className={titleStyle}>{title}</span>
-            <p
-                className={`absolute left-0 w-full h-full z-10
-                            flex items-center justify-center 
-                            transition-all group-hover:translate-y-[-100%]
-                            ${titleStyle} ${bgColor}`}
-            >
-                {title}
-            </p>
+            <span className="featured-item__cover" style={{ backgroundImage: `url(${bgImg})` }} />
+            <span className="featured-item__title">{title}</span>
+            <p className={`featured-item__title-box featured-item__title ${bgColor}`}>{title}</p>
         </Link>
     );
 }

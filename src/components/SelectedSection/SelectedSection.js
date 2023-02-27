@@ -25,7 +25,7 @@ function SelectedSection() {
     return (
         <>
             <DetailItem item={randomItem1} />
-            <DetailItem className="flex-row-reverse" item={randomItem2} />
+            <DetailItem item={randomItem2} />
         </>
     );
 }

@@ -1,0 +1,11 @@
+@tailwind components;
+@layer components {
+    .non-alcoholic__wrapper {
+        @apply flex flex-col bg-light-blue-bg pt-12 px-9 -mx-9;
+    }
+
+    .non-alcoholic__items {
+        @apply w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5
+        bg-primary-bg dark:bg-black py-12 px-10 rounded-t-xl;
+    }
+}

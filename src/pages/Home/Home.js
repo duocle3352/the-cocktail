@@ -67,7 +67,7 @@ function Home() {
                 <SelectedSection />
             </section>
 
-            <section className="section-wrapper">
+            <section className="section-wrapper hidden lg:block">
                 <SectionHeader title="Featured" subtitle="Collections" />
                 <FeaturedCollections />
             </section>

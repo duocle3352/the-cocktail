@@ -2,6 +2,7 @@ import { useInView } from 'react-intersection-observer';
 import { ProductItem } from '~/components/ProductItem';
 import { Loading } from '~/components/Loading';
 import images from '~/assets/images';
+import './NonAlcoholic.css';
 
 function NonAlcoholic({ items }) {
     const { ref, inView } = useInView({
@@ -10,16 +11,13 @@ function NonAlcoholic({ items }) {
     });
 
     return (
-        <div
-            ref={ref}
-            className={`flex flex-col bg-light-blue-bg pt-12 px-9 -mx-9
-            ${inView ? 'drop-up' : 'drop-down'}`}
-        >
-            <img src={images.drawGlass} alt="draw" className="h-[200px] object-contain" />
-            <div
-                className="w-full grid grid-cols-5 gap-x-6 gap-y-8 
-                bg-primary-bg dark:bg-black py-12 px-10 rounded-t-xl"
-            >
+        <div ref={ref} className={`non-alcoholic__wrapper ${inView ? 'drop-up' : 'drop-down'}`}>
+            <img
+                src={images.drawGlass}
+                alt="draw"
+                className="h-[100px] md:h-[200px] object-contain"
+            />
+            <div className="non-alcoholic__items">
                 {items.length > 0 ? (
                     items.map((item) => <ProductItem key={item.idDrink} item={item} />)
                 ) : (

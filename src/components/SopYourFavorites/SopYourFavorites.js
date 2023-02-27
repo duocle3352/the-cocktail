@@ -11,7 +11,7 @@ function SopYourFavorites({ items }) {
     return (
         <div
             ref={ref}
-            className={`grid grid-cols-5 gap-x-6 gap-y-8
+            className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5
             ${inView ? 'drop-up' : 'drop-down'}`}
         >
             {items && items.map((item) => <ProductItem key={item.idDrink} item={item} />)}
