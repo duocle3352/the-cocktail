@@ -7,7 +7,9 @@ function RightBarLayout({ children }) {
             <Header />
             <div className="flex mt-20 py-10">
                 <RightBar />
-                <section className="flex-1 ml-5 mr-9">{children}</section>
+                <section className="flex-1 mx-3 md:mx-5 lg:mx-9 lg:ml-5 overflow-hidden">
+                    {children}
+                </section>
             </div>
             <Footer />
         </>

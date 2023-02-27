@@ -3,11 +3,12 @@ import ReactPaginate from 'react-paginate';
 import { useSelector, useDispatch } from 'react-redux';
 import { newPageItem } from '~/state/features/paginationSlice';
 import { ProductItem } from '~/components/ProductItem';
+import './Paginate.css';
 
 function Items({ currentItems }) {
     return (
         <>
-            <div className="grid grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
                 {currentItems &&
                     currentItems.map((item) => <ProductItem item={item} key={item.idDrink} />)}
             </div>
@@ -38,19 +39,18 @@ function Paginate({ items, pageSize }) {
                     nextLabel="Next >"
                     previousLabel="< Previous"
                     pageCount={pageCount}
-                    pageRangeDisplayed={4}
-                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={1}
                     forcePage={currentPage}
                     renderOnZeroPageCount={null}
                     onPageChange={handlePageClick}
                     //
-                    containerClassName="flex items-center justify-end mt-10"
-                    pageLinkClassName="mx-2 p-2 text-lg hover:text-primary-orange dark:text-white dark:hover:text-primary-orange"
-                    activeLinkClassName="text-primary-orange dark:text-primary-orange font-bold bg-primary-bg rounded-lg"
-                    previousLinkClassName="p-2 dark:text-white hover:text-primary-orange dark:hover:text-primary-orange"
-                    nextLinkClassName="p-2 dark:text-white hover:text-primary-orange dark:hover:text-primary-orange"
-                    disabledLinkClassName="text-darkLightText hover:text-darkLightText
-                                            dark:text-darkLightText dark:hover:text-darkLightText cursor-default"
+                    containerClassName="paginate-container"
+                    pageLinkClassName="paginate-link mx-2 text-lg"
+                    activeLinkClassName="paginate-link__active"
+                    previousLinkClassName="paginate-link paginate-padding-0"
+                    nextLinkClassName="paginate-link paginate-padding-0"
+                    disabledLinkClassName="paginate-disabled"
                 />
             ) : (
                 ''

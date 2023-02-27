@@ -12,7 +12,7 @@ const List = ({ data, title }) => {
         <ul className="list-decimal list-inside">
             <h4 className="mb-4 dark:text-white">{title}</h4>
             {data.map((key) => (
-                <li key={key[0]} className="text-lg py-1 dark:text-white">
+                <li key={key[0]} className="text-sm lg:text-lg py-1 dark:text-white">
                     {key[1]}
                 </li>
             ))}
@@ -64,7 +64,7 @@ function Detail() {
 
             <div>
                 <SectionHeader title="Customer" subtitle="also like" />
-                <div className="grid grid-cols-5 gap-x-6 gap-y-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
                     {shopYourFavorites.map((item) => (
                         <ProductItem key={item.idDrink} item={item} />
                     ))}

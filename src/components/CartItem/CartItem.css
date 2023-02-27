@@ -1,0 +1,37 @@
+@tailwind components;
+@layer components {
+    .cart-item {
+        @apply grid grid-cols-6 md:grid-cols-12 grid-flow-row gap-3 py-3 relative;
+    }
+
+    .cart-item__image {
+        @apply w-[100px] rounded-lg object-contain mr-5;
+    }
+
+    .cart-item__title {
+        @apply contents text-lg font-semibold pr-2 hover:text-primary-green
+        dark:text-white dark:hover:text-primary-orange;
+    }
+
+    .cart-item__price {
+        @apply col-span-2 text-xl font-bold dark:text-white;
+    }
+
+    .cart-item__QTY {
+        @apply text-xl font-bold px-5 dark:text-white;
+    }
+
+    .cart-item__QTY-btn {
+        @apply border-2 border-solid border-primary-green rounded-full 
+        hover:text-primary-orange dark:text-white dark:hover:text-primary-orange;
+    }
+
+    .cart-item__QTY-disabled {
+        @apply text-darkLightText hover:text-darkLightText border-darkLightText cursor-default
+        dark:text-darkLightText dark:hover:text-darkLightText dark:border-darkLightText;
+    }
+
+    .cart-item__remove-btn {
+        @apply dark:text-white bg-primary-bg dark:bg-dark-bg p-2 rounded-full;
+    }
+}

@@ -1,0 +1,14 @@
+@tailwind components;
+@layer components {
+    .cart-list-item {
+        @apply my-10 border-b-2 border-solid border-borderColor;
+    }
+
+    .cart-list-title {
+        @apply text-xl font-semibold dark:text-white;
+    }
+
+    .cart-message {
+        @apply w-full max-w-[500px] h-[150px] p-4 rounded-xl dark:bg-dark-bg;
+    }
+}

@@ -5,27 +5,19 @@ import { Link } from 'react-router-dom';
 import { AiOutlineClose } from 'react-icons/ai';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-import { CloseBtn } from '~/components/CloseBtn';
 import { decrease, increase, remove } from '~/state/features/cartSlice';
-
-const priceStyle = 'col-span-2 text-xl font-bold dark:text-white';
-const controlQTYStyle = `border-2 border-solid border-primary-green rounded-full 
-                        hover:text-primary-orange dark:text-white dark:hover:text-primary-orange`;
+import './CartItem.css';
 
 function CartItem({ item }) {
     const { id, name, price, image, amount } = item;
     const dispatch = useDispatch();
 
     return (
-        <li className="grid grid-cols-12 gap-5 py-3 relative">
+        <li className="cart-item">
             {/* info */}
-            <div className="col-span-5 flex ">
-                <img className="w-[100px] rounded-lg object-contain mr-10" src={image} alt={name} />
-                <Link
-                    to={`detail/${id}`}
-                    className="contents text-lg font-semibold hover:text-primary-green
-                                dark:text-white dark:hover:text-primary-orange"
-                >
+            <div className="col-span-4 flex ">
+                <img className="cart-item__image" src={image} alt={name} />
+                <Link to={`detail/${id}`} className="cart-item__title">
                     {name}
                 </Link>
             </div>
@@ -35,25 +27,22 @@ function CartItem({ item }) {
                 displayType={'text'}
                 thousandSeparator={true}
                 prefix={'$'}
-                renderText={(formattedValue) => <p className={priceStyle}>{formattedValue}</p>}
+                renderText={(formattedValue) => (
+                    <p className="col-span-2 cart-item__price">{formattedValue}</p>
+                )}
             />
             {/* amount */}
-            <div className="col-span-2 flex items-start">
+            <div className="col-span-4 md:col-span-3 flex items-start">
                 <button
-                    className={`${controlQTYStyle} ${
-                        amount === 0
-                            ? `text-darkLightText hover:text-darkLightText border-darkLightText cursor-default
-                                dark:text-darkLightText dark:hover:text-darkLightText dark:border-darkLightText`
-                            : ''
+                    className={`cart-item__QTY-btn ${
+                        amount === 0 ? 'cart-item__QTY-disabled' : ''
                     }`}
                     onClick={() => dispatch(decrease(item))}
                 >
                     <FiChevronLeft size="1.6rem" />
                 </button>
-
-                <p className="text-xl font-bold px-10 dark:text-white">{amount}</p>
-
-                <button className={controlQTYStyle} onClick={() => dispatch(increase(item))}>
+                <p className="cart-item__QTY">{amount}</p>
+                <button className="cart-item__QTY-btn" onClick={() => dispatch(increase(item))}>
                     <FiChevronRight size="1.6rem" />
                 </button>
             </div>
@@ -63,13 +52,16 @@ function CartItem({ item }) {
                 displayType={'text'}
                 thousandSeparator={true}
                 prefix={'$'}
-                renderText={(formattedValue) => <p className={priceStyle}>{formattedValue}</p>}
+                renderText={(formattedValue) => (
+                    <p className="col-span-2 cart-item__price">{formattedValue}</p>
+                )}
             />
             {/* remove */}
-            <CloseBtn
-                icon={<AiOutlineClose size="2rem" />}
-                onClose={() => dispatch(remove(item))}
-            />
+            <div className="absolute top-3 right-0 md:static ">
+                <button className="cart-item__remove-btn" onClick={() => dispatch(remove(item))}>
+                    <AiOutlineClose size="1rem" />
+                </button>
+            </div>
         </li>
     );
 }

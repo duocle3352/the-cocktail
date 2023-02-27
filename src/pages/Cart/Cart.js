@@ -4,8 +4,7 @@ import { CartItem } from '~/components/CartItem';
 import { Button } from '~/components/Button';
 import { clear } from '~/state/features/cartSlice';
 import images from '~/assets/images';
-
-const colTitleStyle = 'text-xl font-semibold dark:text-white';
+import './Cart.css';
 
 function Cart() {
     const dispatch = useDispatch();
@@ -20,28 +19,27 @@ function Cart() {
             {cartItems.length > 0 ? (
                 <>
                     {/* list item */}
-                    <ul className="my-10 border-b-2 border-solid border-borderColor">
-                        <li className="grid grid-cols-12 gap-5 py-5">
-                            <p className={`col-span-5 ${colTitleStyle}`}>Product</p>
-                            <p className={`col-span-2 ${colTitleStyle}`}>Price</p>
-                            <p className={`col-span-2 ${colTitleStyle}`}>QTY</p>
-                            <p className={`col-span-2 ${colTitleStyle}`}>Total</p>
+                    <ul className="cart-list-item">
+                        <li className="grid grid-cols-6 md:grid-cols-12 gap-3 py-5">
+                            <p className="col-span-4 cart-list-title">Product</p>
+                            <p className="col-span-2 cart-list-title">Price</p>
+                            <p className="hidden md:block col-span-3 cart-list-title">QTY</p>
+                            <p className="hidden md:block col-span-2 cart-list-title">Total</p>
                         </li>
                         {cartItems.map((item) => (
                             <CartItem key={item.id} item={item} />
                         ))}
                     </ul>
-                    <div className="flex justify-between">
-                        <div>
+                    <div className="md:grid grid-cols-6 gap-10">
+                        {/* massage */}
+                        <div className="col-span-3 mb-5">
                             <h5 className="font-semibold mb-4 dark:text-white">
                                 Special instructions for seller
                             </h5>
-                            <textarea
-                                placeholder="Message"
-                                className="h-[150px] w-[500px] p-4 rounded-xl dark:bg-dark-bg"
-                            />
+                            <textarea placeholder="Message" className="cart-message" />
                         </div>
-                        <div className="w-[500px]">
+
+                        <div className="col-span-3 lg:col-start-5 lg:col-span-2">
                             {/* total price */}
                             <NumericFormat
                                 value={total}

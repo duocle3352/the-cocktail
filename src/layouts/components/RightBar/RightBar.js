@@ -33,7 +33,7 @@ function RightBar() {
     };
 
     return (
-        <ul className="w-[250px] mx-10">
+        <ul className="hidden lg:block w-[250px] mx-10">
             {categories.map((category, index) => (
                 <li key={index}>
                     <Title index={index} category={category} />

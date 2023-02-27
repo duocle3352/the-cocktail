@@ -7,7 +7,7 @@ function HeaderLayout({ children }) {
             <Header />
             <div className="mt-20">
                 <Sidebar />
-                <div className="mx-9 py-10"> {children}</div>
+                <div className="mx-3 md:mx-5 lg:mx-9 py-10 overflow-hidden"> {children}</div>
             </div>
             <Footer />
         </>

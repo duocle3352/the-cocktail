@@ -77,7 +77,9 @@ function Category() {
     return (
         <>
             <div className="flex items-start justify-between z-10">
-                <SectionHeader title={currentType?.strCategory || ''} />
+                <div className="mr-3">
+                    <SectionHeader title={currentType?.strCategory || ''} />
+                </div>
                 <Select
                     options={options}
                     defaultValue={options[0]}
@@ -85,7 +87,7 @@ function Category() {
                         control: (baseStyles, state) => ({
                             ...baseStyles,
                             borderColor: state.isFocused ? 'grey' : '#115e5d',
-                            width: '220px',
+                            width: '150px',
                             padding: '6px',
                         }),
                     }}
